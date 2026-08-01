@@ -5,36 +5,32 @@ import { FiArrowRight } from "react-icons/fi";
 
 const slides = [
   {
-    image:
-      "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1920&auto=format&fit=crop",
-    tag: "Mobilny Bar Premium",
-    title: "Smak, który podnosi każdy event",
+    image: "/hero1.jpg",
+    tag: "Mobilny Bar Koktajlowy",
+    title: "Smak, styl i emocje w jednym miejscu",
     description:
-      "Elegancki mobilny bar na przyjęcia, wesela i eventy firmowe. Koktajle tworzone z pasją.",
+      "Wy cieszycie się chwilą, my dbamy o resztę. Zapewniamy profesjonalną obsługę i estetyczną strefę barową dopasowaną do charakteru wydarzenia.",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1920&auto=format&fit=crop",
-    tag: "Koktajle Premium",
-    title: "Koktajle tworzone z pasją",
+    image: "/hero2.jpg",
+    tag: "Najwyższa Jakość",
+    title: "Autorskie koktajle i naturalne składniki",
     description:
-      "Ponad 50 autorskich przepisów. Świeże składniki i prezentacja na najwyższym poziomie.",
+      "Pracujemy na sprawdzonych alkoholach premium, autorskich syropach i świeżych owocach. Jakość, która ma znaczenie w każdym drinku.",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1551024709-8f23befc6f87?q=80&w=1920&auto=format&fit=crop",
-    tag: "Show Barmański",
-    title: "Pokaz, który zapiera dech",
+    image: "/hero3.jpg",
+    tag: "Open Bar",
+    title: "Kompleksowa obsługa bez niedomówień",
     description:
-      "Dynamiczny pokaz flaringu i przygotowywania drinków, który stanie się atrakcją wieczoru.",
+      "Serwis w systemie Open Bar do 8 godzin. Na każde przyjęcie przyjeżdżamy w pełni przygotowani, z własnym zapleczem i sprawdzonymi rozwiązaniami.",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?q=80&w=1920&auto=format&fit=crop",
-    tag: "Wesela & Eventy",
-    title: "Wesela, które zostają w pamięci",
+    image: "/hero4.jpg",
+    tag: "Atrakcje Dodatkowe",
+    title: 'Efekt "WOW", który zapiera dech',
     description:
-      "Stworzymy bar idealnie dopasowany do stylu Twojego wesela i oczekiwań gości.",
+      "Pokaz barmański Fireshow, bar molekularny z suchym lodem czy elegancka wieża z szampana. Spektakl, który zostaje w sercach gości.",
   },
 ];
 
@@ -75,12 +71,16 @@ export default function Hero() {
           {slides.map((slide, i) => (
             <div
               key={i}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${i === current ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                i === current ? "opacity-100 z-10" : "opacity-0 z-0"
+              }`}
             >
               <img
                 src={slide.image}
                 alt={slide.tag}
-                className={`absolute inset-0 w-full h-full object-cover will-change-transform transition-transform duration-[7000ms] ease-linear ${i === current ? "scale-100" : "scale-110"}`}
+                className={`absolute inset-0 w-full h-full object-cover will-change-transform transition-transform duration-[7000ms] ease-linear ${
+                  i === current ? "scale-100" : "scale-110"
+                }`}
               />
               <div className="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/30" />
               <div className="absolute inset-0 bg-black/10" />
@@ -132,9 +132,9 @@ export default function Hero() {
               style={{ maxWidth: "1400px", margin: "0 auto" }}
             >
               {[
-                { value: "100+", label: "Eventów" },
-                { value: "50+", label: "Koktajli" },
-                { value: "100%", label: "Zadowolonych" },
+                { value: "100+", label: "Obsłużonych eventów" },
+                { value: "8h", label: "Open Bar w pakiecie" },
+                { value: "100%", label: "Naturalnych składników" },
               ].map((stat, i) => (
                 <div
                   key={i}
@@ -195,7 +195,11 @@ export default function Hero() {
                 <button
                   key={i}
                   onClick={() => setCurrent(i)}
-                  className={`transition-all duration-500 rounded-full hidden sm:block ${i === current ? "w-6 h-1.5 md:w-8 md:h-2 bg-gold" : "w-1.5 h-1.5 md:w-2 md:h-2 bg-white/25 hover:bg-white/50"}`}
+                  className={`transition-all duration-500 rounded-full hidden sm:block ${
+                    i === current
+                      ? "w-6 h-1.5 md:w-8 md:h-2 bg-gold"
+                      : "w-1.5 h-1.5 md:w-2 md:h-2 bg-white/25 hover:bg-white/50"
+                  }`}
                 />
               ))}
             </div>

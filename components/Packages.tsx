@@ -3,43 +3,56 @@ import { FiCheck, FiArrowRight } from "react-icons/fi";
 export default function Packages() {
   const packages = [
     {
-      name: "Klasyk",
-      desc: "Idealny na mniejsze spotkania i garden party w gronie najbliższych.",
+      name: "Basic",
+      desc: "Klasyczna elegancja. Solidna baza alkoholowa i pełne wyposażenie dla mniejszych imprez.",
       features: [
-        "Obsługa do 3 godzin",
-        "Menu do 4 rodzajów drinków",
-        "Podstawowe wyposażenie barowe",
-        "Szkło i dodatki",
-        "Do 50 gości",
+        "Rum, Gin, Whisky Szkocka i Irlandzka, Triple Sec",
+        "Świeże egzotyczne owoce, zioła oraz przyprawy",
+        "Syropy i kordiały z naturalnych składników",
+        "Bittersy i likiery barmańskie (Monin, Giffard)",
+        "Soki owocowe 100% oraz napoje gazowane",
+        "Domowe puree ze świeżych owoców",
+        "Koktajle bezalkoholowe w cenie",
+        "Lód w kostkach i kruszony",
       ],
+      footnote:
+        "Wódka czysta po stronie organizatora (średnio 5 litrów na każde 100 osób).",
       cta: "Zapytaj o pakiet",
       highlighted: false,
     },
     {
-      name: "Premium",
-      desc: "Najczęściej wybierany na wesela i duże eventy firmowe.",
+      name: "Classic",
+      desc: "Dla tych, którzy chcą czegoś więcej. Z myślą o wyjątkowych chwilach, zawsze w dobrym smaku!",
       features: [
-        "Obsługa do 6 godzin",
-        "Menu do 8 rodzajów drinków",
-        "Pełne wyposażenie premium",
-        "Autorskie dekoracje baru",
-        "Do 150 gości",
-        "Współpraca z fotografem",
+        "Rum Blanco i Spiced, Gin, Whisky, Tequila, Triple Sec",
+        "Likiery smakowe do drinków",
+        "Kolorowe shoty w kilku różnych smakach",
+        "Przepyszna domowa nalewka dla gości",
+        "10% rabatu na atrakcje dodatkowe",
+        "Świeże owoce, zioła, syropy, bittersy i puree",
+        "Soki 100%, napoje gazowane i lód",
+        "Koktajle bezalkoholowe w cenie",
       ],
+      footnote:
+        "Wódka czysta po stronie organizatora (średnio 5 litrów na każde 100 osób).",
       cta: "Zapytaj o pakiet",
       highlighted: true,
     },
     {
-      name: "VIP",
-      desc: "Kompleksowa obsługa bez kompromisów dla najbardziej wymagających.",
+      name: "Prestige",
+      desc: "Najszerszy zakres barowych możliwości. Celebracja w najlepszym wydaniu!",
       features: [
-        "Obsługa bez limitu godzin",
-        "Nielimitowane menu koktajlowe",
-        "Show barmański (flairing)",
-        "Topowe alkohole z półki Premium",
-        "Brak limitu gości",
-        "Osobny koordynator baru",
+        "Rozszerzona półka: Jägermeister, Aperol, Prosecco (i 0%), Campari, Wermuty",
+        "Bar molekularny – suchy lód tworzący efekt mgiełki",
+        "Podpalane shoty w wielu smakach i kolorach",
+        "Modyfikacje wizualne menu koktajli na życzenie",
+        "Bogatsza oprawa wizualna baru (oświetlenie, dekoracje)",
+        "Aż 20% zniżki na atrakcje dodatkowe",
+        "Pełne zaplecze z pakietu Classic",
+        "Koktajle bezalkoholowe w cenie",
       ],
+      footnote:
+        "Wódka czysta po stronie organizatora (średnio 5 litrów na każde 100 osób).",
       cta: "Zapytaj o pakiet",
       highlighted: false,
     },
@@ -56,8 +69,8 @@ export default function Packages() {
             Dopasujemy się do Twojego budżetu
           </h2>
           <p className="text-navy/45 text-sm md:text-lg font-light leading-relaxed mt-3 md:mt-4">
-            Każdy event jest inny. Oto przykładowe pakiety, które możemy
-            modyfikować.
+            Każdy pakiet obejmuje kompletną obsługę barową bez ukrytych kosztów,
+            dopłat i niedomówień.
           </p>
         </div>
 
@@ -86,10 +99,12 @@ export default function Packages() {
                 </p>
 
                 <div
-                  className={`w-full h-px my-4 md:my-6 ${pkg.highlighted ? "bg-gold/20" : "bg-navy/[0.06]"}`}
+                  className={`w-full h-px my-4 md:my-6 ${
+                    pkg.highlighted ? "bg-gold/20" : "bg-navy/[0.06]"
+                  }`}
                 />
 
-                <ul className="space-y-2.5 md:space-y-4 flex-1">
+                <ul className="space-y-2.5 md:space-y-3 flex-1">
                   {pkg.features.map((feature, j) => (
                     <li key={j} className="flex items-start gap-3">
                       <div className="mt-0.5 text-gold-dark flex-shrink-0">
@@ -105,9 +120,14 @@ export default function Packages() {
                   ))}
                 </ul>
 
+                {/* Stopka z informacją o wódce */}
+                <p className="text-[10px] md:text-xs text-navy/30 mt-4 leading-relaxed">
+                  *{pkg.footnote}
+                </p>
+
                 <a
                   href="#kontakt"
-                  className={`mt-6 md:mt-10 flex items-center justify-center gap-2 font-semibold text-sm py-3 md:py-4 rounded-xl transition-all duration-300 ${
+                  className={`mt-6 flex items-center justify-center gap-2 font-semibold text-sm py-3 md:py-4 rounded-xl transition-all duration-300 ${
                     pkg.highlighted
                       ? "bg-gold text-navy hover:bg-gold-light hover:shadow-lg hover:shadow-gold/25"
                       : "bg-navy text-white hover:bg-navy-light"

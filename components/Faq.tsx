@@ -5,29 +5,34 @@ import { FiPlus, FiMinus, FiArrowRight } from "react-icons/fi";
 
 const faqs = [
   {
-    question: "Czy w cenie usługi jest alkohol?",
+    question: "Kiedy rozpoczyna się serwis koktajli?",
     answer:
-      "Zazwyczaj alkohol nie jest wliczony w cenę usługi barmańskiej – zakup alkoholu pozostawiamy organizatorowi. Chętnie jednak pomagamy w skompletowaniu listy zakupowej dopasowanej do wybranego menu i liczby gości.",
+      "To Wy wybieracie godzinę rozpoczęcia serwisu. Nasz bar jest zawsze gotowy przed wejściem pierwszych gości. Co ważne – serwis może rozpocząć się nawet do godziny później bez żadnych dopłat.",
   },
   {
-    question: "Do jakiego obszaru dojeżdżacie?",
+    question: "Kto zajmuje się zakupami i alkoholem?",
     answer:
-      "Działamy na terenie całej Polski. Najczęściej obsługujemy województwo mazowieckie, małopolskie i dolnośląskie, ale przy większych eventach dojeżdżamy w każde miejsce. Koszty dojazdu ustalamy indywidualnie.",
+      "Nasza usługa jest kompleksowa. Zajmujemy się wszystkim – od przygotowania zaplecza, przez składniki, aż po wyposażenie. Wy nie musicie się o nic martwić.",
   },
   {
-    question: "Ile kosztuje wynajęcie barmana na wesele?",
+    question: "Czy bar może być ustawiony na zewnątrz?",
     answer:
-      "Koszt uzależniony jest od pakietu, liczby gości i czasu trwania imprezy. Nasze pakiety zaczynają się już od kilkuset złotych. Najlepiej sprawdzić zakładkę 'Pakiety' lub wysłać do nas zapytanie przez formularz kontaktowy – wyceniamy szybko i bez zobowiązań.",
+      "Tak! Organizujemy bary w ogrodach i na zewnątrz. Potrzebujemy jedynie dostępu do prądu (standardowe 230V) oraz odpowiedniego podłoża i zadaszenia na wypadek niepogody.",
   },
   {
-    question: "Czy muszę zapewnić miejsce i stół na bar?",
+    question: "Ilu barmanów obsługuje przyjęcie?",
     answer:
-      "Nie musisz się o nic martwić. Przyjeżdżamy ze swoim profesjonalnym wyposażeniem – mobilnym barem, szkłem, shakerami, składnikami i lodem. Potrzebujemy jedynie dostępu do prądu (standardowe 230V) i zadaszonego miejsca w razie niepogody.",
+      "Do 40 gości obsługę zapewnia jeden doświadczony barman. Powyżej 40 osób zawsze przyjeżdża dwóch lub więcej barmanów, aby serwis przebiegał płynnie i bez kolejek.",
   },
   {
-    question: "Jakie drinki znajdą się w ofercie?",
+    question: "Czy można wydłużyć czas pracy baru?",
     answer:
-      "Menu zawsze dostosowujemy do charakteru wydarzenia i preferencji gości. Możemy zaproponować klasyczne koktajle, autorskie drinki w kolorach pary młodej, a także rozbudowaną strefę drinków bezalkoholowych (mocktaieli).",
+      "Oczywiście! Jesteśmy bardzo elastyczni. Możesz zdecydować się na przedłużenie pracy baru bezpośrednio podczas trwania przyjęcia lub ustalić to z nami na etapie wczesnych przygotowań.",
+  },
+  {
+    question: "Jak mogę zarezerwować termin?",
+    answer:
+      "Najlepiej po prostu do nas napisać przez formularz kontaktowy lub wiadomość. Chętnie odpowiemy na wszelkie pytania, umówimy się na spotkanie lub wyślemy umowę mailem.",
   },
 ];
 
@@ -46,11 +51,11 @@ export default function Faq() {
             FAQ
           </span>
           <h2 className="font-serif text-2xl md:text-4xl lg:text-5xl font-semibold text-navy mt-3 md:mt-4 tracking-tight">
-            Najczęstsze pytania
+            Pytania i odpowiedzi
           </h2>
           <p className="text-navy/45 text-sm md:text-lg font-light leading-relaxed mt-3 md:mt-4">
-            Nie znalazłeś odpowiedzi? Napisz do nas, chętnie wyjaśnimy wszelkie
-            szczegóły.
+            Najczęściej zadawane pytania i to, co warto wiedzieć przed
+            wydarzeniem.
           </p>
         </div>
 
@@ -107,7 +112,7 @@ export default function Faq() {
           ))}
         </div>
 
-        {/* WCHŁONIĘTE CTA */}
+        {/* Sekcja zachęcająca do kontaktu */}
         <div className="mt-12 md:mt-20 text-center">
           <div className="w-16 h-px bg-gold/30 mx-auto mb-8 md:mb-10" />
           <h3 className="font-serif text-xl md:text-3xl font-semibold text-navy tracking-tight">

@@ -6,39 +6,39 @@ export default function Services() {
   const services = [
     {
       icon: FaCocktail,
-      title: "Obsługa barmańska",
+      title: "Serwis Open Bar",
       description:
-        "Profesjonalny barman z pełnym wyposażeniem na Twoim evencie. Koktajle przygotowywane na żywo przed gośćmi.",
+        "Obsługa barmańska w systemie Open Bar do 8 godzin. Indywidualne menu koktajlowe ustalane wspólnie przed wydarzeniem, a doświadczeni barmani dbają o energię i klimat.",
     },
     {
       icon: GiWineGlass,
       title: "Wesela i przyjęcia",
       description:
-        "Elegancki bar dopasowany do stylu wesela. Od klasyków po autorskie koktajle w kolorach pary młodej.",
+        "Zrealizowaliśmy dziesiątki wesel. Stworzymy elegancki bar dopasowany do stylu Twojego przyjęcia, zdejmując z Was stres organizacyjny od pierwszego kontaktu.",
     },
     {
       icon: FiBriefcase,
       title: "Eventy firmowe",
       description:
-        "Integracje, bankiety, konferencje. Stworzymy bar, który zrobi wrażenie na gościach biznesowych.",
+        "Integracje, bankiety i konferencje. Stworzymy strefę barową, która zrobi profesjonalne wrażenie na gościach biznesowych i umili czas pracownikom.",
     },
     {
       icon: FiGlobe,
       title: "Imprezy prywatne",
       description:
-        "Urodziny, rocznice, garden party. Przenosimy doświadczenie koktajlbaru prosto do Twojego ogrodu.",
+        "Urodziny, garden party, domówki czy wieczory kawalerskie. Przenosimy jakość topowych koktajlbarów prosto do Twojego ogrodu lub domu.",
     },
     {
       icon: FiZap,
-      title: "Show barmański",
+      title: "Pokaz barmański Fireshow",
       description:
-        "Dynamiczny pokaz flaringu i przygotowywania drinków, który stanie się główną atrakcją wieczoru.",
+        "Spektakl, który wzbudza emocje! Żonglerki z ogniem, sztuczki z shakerami i specjalny koktajl pokazowy – idealny efekt WOW na rozpoczęcie imprezy.",
     },
     {
       icon: FiTool,
-      title: "Pełne wyposażenie",
+      title: "Mobilność i logistyka",
       description:
-        "Przyjeżdżamy ze wszystkim — szkło, shakery, lód, składniki. Ty nie musisz o nic się martwić.",
+        "Przyjeżdżamy 3 godziny wcześniej ze swoim zapleczem. Wybieracie styl baru pod Waszą wizję, a my zajmujemy się resztą – dojazd w całym woj. pomorskim w cenie.",
     },
   ];
 
@@ -54,12 +54,12 @@ export default function Services() {
               Usługi
             </span>
             <h2 className="font-serif text-2xl md:text-4xl lg:text-5xl font-semibold text-white mt-3 md:mt-4 tracking-tight">
-              Co oferujemy
+              Nasza usługa od A do Z
             </h2>
           </div>
           <p className="text-white/35 text-sm md:text-base font-light leading-relaxed max-w-sm md:text-right">
-            Kompleksowa obsługa barmańska dostosowana do charakteru Twojego
-            wydarzenia.
+            Twój w pełni zaopatrzony bar, gotowy serwować koktajle i emocje —
+            bez ukrytych kosztów i niedomówień.
           </p>
         </div>
 

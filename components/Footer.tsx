@@ -68,11 +68,11 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:wiczkowski47@gmail.com"
+                  href="mailto: kontakt@heaventastebar.pl"
                   className="flex items-center gap-3 text-white/30 hover:text-gold text-sm transition-colors duration-300"
                 >
                   <FiMail className="w-4 h-4 text-gold/60" />
-                  wiczkowski47@gmail.com
+                  kontakt@heaventastebar.pl
                 </a>
               </li>
               <li className="flex items-center gap-3 pt-2">

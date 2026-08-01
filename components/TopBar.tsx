@@ -39,12 +39,12 @@ export default function Topbar() {
         </div>
 
         <a
-          href="mailto:wiczkowski47@gmail.com"
+          href="mailto:kontakt@heaventastebar.pl"
           className="flex items-center gap-2 text-gold/60 hover:text-gold transition-colors duration-300"
         >
           <FiMail className="w-3 h-3" />
           <span className="text-[11px] font-medium tracking-wide hidden sm:inline">
-            wiczkowski47@gmail.com
+            kontakt@heaventastebar.pl
           </span>
         </a>
       </div>

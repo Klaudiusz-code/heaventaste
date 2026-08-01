@@ -28,6 +28,18 @@ const images = [
     src: "gallery6.jpg",
     alt: "Detale koktajli",
   },
+  {
+    src: "gallery7.jpg",
+    alt: "Detale koktajli",
+  },
+  {
+    src: "gallery8.jpg",
+    alt: "Detale koktajli",
+  },
+  {
+    src: "gallery9.jpg",
+    alt: "Detale koktajli",
+  },
 ];
 
 export default function Gallery() {
