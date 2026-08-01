@@ -9,7 +9,7 @@ const images = [
     alt: "Przygotowywanie koktajlu",
   },
   {
-    src: "gallery2.jpg",
+    src: "gallery2.jpeg",
     alt: "Barman w akcji",
   },
   {
@@ -21,11 +21,11 @@ const images = [
     alt: "Show barmański",
   },
   {
-    src: "gallery5.jpg",
+    src: "gallery5.jpeg",
     alt: "Obsługa weselna",
   },
   {
-    src: "gallery6.jpg",
+    src: "gallery6.jpeg",
     alt: "Detale koktajli",
   },
   {
@@ -40,6 +40,19 @@ const images = [
     src: "gallery9.jpg",
     alt: "Detale koktajli",
   },
+  {
+    src: "gallery10.jpeg",
+    alt: "Detale koktajli",
+  },
+  {
+    src: "gallery12.jpeg",
+    alt: "Detale koktajli",
+  },
+  {
+    src: "gallery13.jpeg",
+    alt: "Detale koktajli",
+  },
+
 ];
 
 export default function Gallery() {
