@@ -63,11 +63,13 @@ export default function Hero() {
           className="relative 
           rounded-none lg:rounded-[3rem] 
           overflow-hidden 
+          min-h-[500px] sm:min-h-[550px] md:min-h-[600px]
           h-[70vh] sm:h-[72vh] lg:h-[75vh] 
           border-0 lg:border border-transparent lg:border-navy/[0.06] 
           shadow-none lg:shadow-[0_30px_80px_-20px_rgba(1,26,48,0.25)] 
           group"
         >
+          {/* SLIDES */}
           {slides.map((slide, i) => (
             <div
               key={i}
@@ -87,6 +89,7 @@ export default function Hero() {
             </div>
           ))}
 
+          {/* MAIN CONTENT */}
           <div
             className="relative z-20 h-full flex items-center"
             style={{ maxWidth: "1400px", margin: "0 auto" }}
@@ -101,13 +104,13 @@ export default function Hero() {
                 </div>
 
                 <div className="overflow-hidden">
-                  <h1 className="font-serif text-[1.75rem] sm:text-3xl md:text-5xl lg:text-6xl font-semibold text-white leading-[1.1] tracking-tight mb-3 sm:mb-4 md:mb-6 transform transition-all duration-700 ease-out">
+                  <h1 className="font-serif text-[1.75rem] sm:text-3xl md:text-4xl lg:text-6xl font-semibold text-white leading-[1.1] tracking-tight mb-3 sm:mb-4 md:mb-6 transform transition-all duration-700 ease-out">
                     {slides[current].title}
                   </h1>
                 </div>
 
                 <div className="overflow-hidden">
-                  <p className="text-white/50 text-xs sm:text-sm md:text-lg font-light leading-relaxed mb-6 sm:mb-8 md:mb-10 max-w-md transform transition-all duration-700 delay-100 ease-out">
+                  <p className="text-white/50 text-xs sm:text-sm md:text-base lg:text-lg font-light leading-relaxed mb-6 sm:mb-8 md:mb-10 max-w-md transform transition-all duration-700 delay-100 ease-out">
                     {slides[current].description}
                   </p>
                 </div>
@@ -125,36 +128,43 @@ export default function Hero() {
             </div>
           </div>
 
+          {/* BOTTOM GRADIENT & STATS */}
           <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none">
             <div className="bg-gradient-to-t from-navy/70 via-navy/30 to-transparent h-24 md:h-32" />
+
+            {/* TUTAJ ZMIANA: Zastosowano ten sam kontener 1400px co dla tekstu głównego */}
             <div
-              className="absolute bottom-0 left-0 right-0 px-5 sm:px-6 md:px-14 lg:px-20 pb-5 md:pb-8 flex flex-wrap gap-x-6 gap-y-3 md:gap-x-16 md:gap-y-0"
-              style={{ maxWidth: "1400px", margin: "0 auto" }}
+              className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full pointer-events-none"
+              style={{ maxWidth: "1400px" }}
             >
-              {[
-                { value: "100+", label: "Obsłużonych eventów" },
-                { value: "8h", label: "Open Bar w pakiecie" },
-                { value: "100%", label: "Naturalnych składników" },
-              ].map((stat, i) => (
-                <div
-                  key={i}
-                  className="transform transition-all duration-500"
-                  style={{ transitionDelay: `${i * 100}ms` }}
-                >
-                  <div className="text-gold font-serif text-base sm:text-lg md:text-2xl font-semibold">
-                    {stat.value}
+              <div className="px-5 sm:px-6 md:px-14 lg:px-20 pb-5 md:pb-8 flex flex-col gap-y-3 md:flex-row md:gap-x-16 md:gap-y-0 max-w-[75%] lg:max-w-[55%]">
+                {[
+                  { value: "100+", label: "Obsłużonych eventów" },
+                  { value: "8h", label: "Open Bar w pakiecie" },
+                  { value: "100%", label: "Naturalnych składników" },
+                ].map((stat, i) => (
+                  <div
+                    key={i}
+                    className="transform transition-all duration-500 whitespace-nowrap"
+                    style={{ transitionDelay: `${i * 100}ms` }}
+                  >
+                    <div className="text-gold font-serif text-base sm:text-lg md:text-2xl font-semibold">
+                      {stat.value}
+                    </div>
+                    <div className="text-white/30 text-[8px] sm:text-[9px] md:text-[10px] mt-0.5 uppercase tracking-[0.15em]">
+                      {stat.label}
+                    </div>
                   </div>
-                  <div className="text-white/30 text-[8px] sm:text-[9px] md:text-[10px] mt-0.5 uppercase tracking-[0.15em]">
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
+          {/* NAVIGATION ARROWS */}
           <button
             onClick={prev}
-            className="absolute left-2 sm:left-3 md:left-8 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-black/40 transition-all duration-300 opacity-0 group-hover:opacity-100"
+            className="absolute left-2 sm:left-3 md:left-8 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-black/40 transition-all duration-300 opacity-60 md:opacity-0 md:group-hover:opacity-100"
+            aria-label="Poprzedni slajd"
           >
             <svg
               className="w-4 h-4 sm:w-5 sm:h-5"
@@ -170,9 +180,11 @@ export default function Hero() {
               />
             </svg>
           </button>
+
           <button
             onClick={next}
-            className="absolute right-2 sm:right-3 md:right-8 top-1/2 -translate-y-1/2 z-20 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-black/40 transition-all duration-300 opacity-0 group-hover:opacity-100"
+            className="absolute right-2 sm:right-3 md:right-8 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 rounded-full bg-black/20 backdrop-blur-md border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-black/40 transition-all duration-300 opacity-60 md:opacity-0 md:group-hover:opacity-100"
+            aria-label="Następny slajd"
           >
             <svg
               className="w-4 h-4 sm:w-5 sm:h-5"
@@ -189,7 +201,8 @@ export default function Hero() {
             </svg>
           </button>
 
-          <div className="absolute bottom-5 right-5 sm:bottom-6 sm:right-6 md:bottom-8 md:right-14 lg:right-20 z-20 flex flex-col items-end gap-2.5 md:gap-3">
+          {/* PROGRESS BAR & DOTS */}
+          <div className="absolute bottom-5 right-5 sm:bottom-6 sm:right-6 md:bottom-8 md:right-14 lg:bottom-8 lg:right-20 z-30 flex flex-col items-end gap-2.5 md:gap-3">
             <div className="flex items-center gap-1.5 md:gap-2">
               {slides.map((_, i) => (
                 <button
@@ -200,6 +213,7 @@ export default function Hero() {
                       ? "w-6 h-1.5 md:w-8 md:h-2 bg-gold"
                       : "w-1.5 h-1.5 md:w-2 md:h-2 bg-white/25 hover:bg-white/50"
                   }`}
+                  aria-label={`Przejdź do slajdu ${i + 1}`}
                 />
               ))}
             </div>
