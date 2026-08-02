@@ -121,7 +121,7 @@ export default function Packages() {
                 </ul>
 
                 {/* Stopka z informacją o wódce */}
-                <p className="text-[10px] md:text-xs text-navy/30 mt-4 leading-relaxed">
+                <p className="text-[10px] md:text-[13px] text-navy/30 mt-4 leading-relaxed">
                   *{pkg.footnote}
                 </p>
 

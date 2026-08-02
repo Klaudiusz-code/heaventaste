@@ -133,7 +133,7 @@ export default function Menu() {
                       className="
                       text-navy/45 
                       text-[11px] 
-                      md:text-xs 
+                      md:text-[13px] 
                       font-light 
                       leading-relaxed 
                       mt-1.5

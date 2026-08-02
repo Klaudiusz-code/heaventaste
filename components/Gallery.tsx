@@ -82,7 +82,6 @@ export default function Gallery() {
           </p>
         </div>
 
-        {/* Równa siatka 3 kolumny, proporcje 4:3 */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {images.map((img, i) => (
             <button
@@ -100,7 +99,6 @@ export default function Gallery() {
         </div>
       </div>
 
-      {/* Lightbox */}
       {selected !== null && (
         <div
           className="fixed inset-0 z-50 bg-navy/95 backdrop-blur-xl flex items-center justify-center p-4"
