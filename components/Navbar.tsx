@@ -32,13 +32,16 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="h-16 w-12 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+          <a
+            href="#"
+            className="flex items-center -ml-6 lg:-ml-8 pl-6 lg:pl-8 group"
+          >
+            <div className="h-20 w-16 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
               <Image
                 src="/logo-taste.svg"
                 alt="Heaven Taste"
-                width={50}
-                height={50}
+                width={70}
+                height={70}
                 className="object-contain"
                 unoptimized={true}
               />
