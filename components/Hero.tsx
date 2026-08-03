@@ -95,7 +95,8 @@ export default function Hero() {
             style={{ maxWidth: "1400px", margin: "0 auto" }}
           >
             <div className="w-full px-5 sm:px-6 md:px-14 lg:px-20">
-              <div className="max-w-xl">
+              {/* TUTAJ ZMIANA: mb-28 sm:mb-32 md:mb-0 odsuwa blok z przyciskiem od statystyk na mobile */}
+              <div className="max-w-xl mb-28 sm:mb-32 md:mb-0">
                 <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/20 rounded-full px-3.5 sm:px-5 py-1.5 sm:py-2 mb-5 md:mb-8 backdrop-blur-sm">
                   <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
                   <span className="text-gold text-[9px] sm:text-[11px] font-medium uppercase tracking-widest">
@@ -132,7 +133,6 @@ export default function Hero() {
           <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none">
             <div className="bg-gradient-to-t from-navy/70 via-navy/30 to-transparent h-24 md:h-32" />
 
-            {/* TUTAJ ZMIANA: Zastosowano ten sam kontener 1400px co dla tekstu głównego */}
             <div
               className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full pointer-events-none"
               style={{ maxWidth: "1400px" }}
