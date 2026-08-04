@@ -1,18 +1,30 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import {
-  FiShield,
-  FiDroplet,
-  FiClock,
-  FiPackage,
-  FiVolume2,
-  FiVolumeX,
-} from "react-icons/fi";
+import { FiVolume2, FiVolumeX, FiCheck } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
-export default function About() {
+interface AboutProps {
+  data: {
+    naglowekGlowny: string;
+    opis: string;
+    cytat: string;
+
+    wideo: {
+      node: {
+        sourceUrl: string;
+      };
+    } | null;
+
+    benefity: {
+      tekst: string;
+    }[];
+  };
+}
+
+export default function About({ data }: AboutProps) {
   const [muted, setMuted] = useState(true);
+
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -28,13 +40,6 @@ export default function About() {
     }
   };
 
-  const features = [
-    { icon: FiShield, label: "Spokój i doświadczenie" },
-    { icon: FiDroplet, label: "Naturalne składniki" },
-    { icon: FiClock, label: "Serwis Open Bar do 8h" },
-    { icon: FiPackage, label: "Własne zaplecze" },
-  ];
-
   return (
     <section
       id="o-nas"
@@ -44,11 +49,13 @@ export default function About() {
 
       <div className="max-w-7xl mx-auto px-5 md:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
+          {/* VIDEO */}
+
           <div className="relative group md:max-w-lg lg:max-w-none mx-auto lg:mx-0 w-full">
             <div className="aspect-[4/5] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden border-2 border-gold/20 shadow-2xl shadow-navy/20 relative bg-navy">
               <video
                 ref={videoRef}
-                src="/vhs2.mp4"
+                src={data.wideo?.node.sourceUrl || "/vhs2.mp4"}
                 autoPlay
                 loop
                 muted
@@ -84,66 +91,109 @@ export default function About() {
             </div>
 
             <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gold/10 rounded-2xl -z-10 hidden md:block" />
+
             <div className="absolute -top-4 -left-4 w-32 h-32 border-2 border-gold/10 rounded-2xl -z-10 hidden md:block" />
           </div>
+
+          {/* CONTENT */}
 
           <div>
             <div className="flex items-center gap-4 mb-4 md:mb-6">
               <div className="h-px w-8 bg-gold" />
+
               <span className="text-gold-dark text-[10px] md:text-xs font-semibold uppercase tracking-[0.2em]">
                 O nas
               </span>
             </div>
 
-            <h2 className="font-serif text-2xl md:text-4xl lg:text-5xl font-semibold text-navy tracking-tight leading-[1.15]">
-              Wy cieszycie się chwilą.{" "}
-              <span className="italic text-gold-dark">My dbamy o resztę.</span>
-            </h2>
+            <h2
+              className="font-serif text-2xl md:text-4xl lg:text-5xl font-semibold text-navy tracking-tight leading-[1.15]"
+              dangerouslySetInnerHTML={{
+                __html: data.naglowekGlowny,
+              }}
+            />
 
             <div className="w-16 h-[2px] bg-gold/30 my-5 md:my-8" />
 
-            <p className="text-navy/60 text-sm md:text-base lg:text-lg font-light leading-relaxed">
-              <strong className="text-navy/90 font-medium">
-                Heaven Taste Bar
-              </strong>{" "}
-              to mobilny bar tworzony z pasji do koktajli i dobrze
-              zorganizowanych przyjęć. Zapewniamy profesjonalną obsługę i
-              estetyczną strefę barową, dopasowaną do charakteru Waszego
-              wydarzenia.
-            </p>
-
-            <p className="text-navy/60 text-sm md:text-base lg:text-lg font-light leading-relaxed mt-3 md:mt-4">
-              Na każde przyjęcie przyjeżdżamy w pełni przygotowani, z własnym
-              zapleczem i sprawdzonymi rozwiązaniami. Dbamy o płynność obsługi,
-              spokojny przebieg wieczoru oraz jakość także poprzez{" "}
-              <strong className="text-navy/90 font-medium">
-                autorskie syropy i naturalne składniki
-              </strong>
-              .
-            </p>
+            <div
+              className="
+              text-navy/60 
+              text-sm md:text-base lg:text-lg 
+              font-light 
+              leading-relaxed
+              [&_strong]:text-navy/90
+              [&_strong]:font-medium
+              [&_p]:mb-3
+              "
+              dangerouslySetInnerHTML={{
+                __html: data.opis,
+              }}
+            />
 
             <div className="bg-cream/60 border-l-4 border-gold pl-5 py-4 mt-6 md:mt-8 rounded-r-lg">
-              <p className="text-navy/70 text-xs md:text-sm font-light leading-relaxed italic">
-                "Gdy pojawiają się zmiany lub niespodzianki, reagujemy szybko i
-                spokojnie,{" "}
-                <span className="text-navy font-medium not-italic">
-                  zdejmując z Was stres organizacyjny
-                </span>
-                ."
-              </p>
+              <p
+                className="
+                text-navy/70 
+                text-xs md:text-sm 
+                font-light 
+                leading-relaxed 
+                italic
+                [&_strong]:text-navy
+                [&_strong]:font-medium
+                [&_strong]:not-italic
+                "
+                dangerouslySetInnerHTML={{
+                  __html: data.cytat,
+                }}
+              />
             </div>
 
             <div className="grid grid-cols-2 gap-3 md:gap-6 mt-8 md:mt-10">
-              {features.map((item, i) => (
+              {data.benefity?.map((item, index) => (
                 <div
-                  key={i}
+                  key={index}
                   className="flex items-center gap-2.5 md:gap-3 group/feat"
                 >
-                  <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0 group-hover/feat:bg-gold/20 transition-colors duration-300">
-                    <item.icon className="w-3.5 h-3.5 md:w-4 md:h-4 text-gold-dark" />
+                  <div
+                    className="
+                    w-9 h-9 
+                    md:w-10 md:h-10 
+                    rounded-lg 
+                    md:rounded-xl 
+                    bg-gold/10 
+                    flex 
+                    items-center 
+                    justify-center 
+                    flex-shrink-0
+                    group-hover/feat:bg-gold/20
+                    transition-colors
+                    duration-300
+                    "
+                  >
+                    <div
+                      className="
+                    w-4 h-4 
+                    rounded-full 
+                    bg-gold 
+                    flex 
+                    items-center 
+                    justify-center
+                    "
+                    >
+                      <FiCheck className="w-3 h-3 text-white" />
+                    </div>
                   </div>
-                  <span className="text-navy/70 text-[11px] md:text-sm font-medium leading-tight">
-                    {item.label}
+
+                  <span
+                    className="
+                    text-navy/70 
+                    text-[11px] 
+                    md:text-sm 
+                    font-medium 
+                    leading-tight
+                    "
+                  >
+                    {item.tekst}
                   </span>
                 </div>
               ))}

@@ -3,67 +3,34 @@
 import { useState } from "react";
 import { FiX, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
-const images = [
-  {
-    src: "gallery1.jpg",
-    alt: "Przygotowywanie koktajlu",
-  },
-  {
-    src: "gallery2.jpeg",
-    alt: "Barman w akcji",
-  },
-  {
-    src: "gallery3.jpg",
-    alt: "Kolorowe drinki",
-  },
-  {
-    src: "gallery4.jpg",
-    alt: "Show barmański",
-  },
-  {
-    src: "gallery5.jpeg",
-    alt: "Obsługa weselna",
-  },
-  {
-    src: "gallery6.jpeg",
-    alt: "Detale koktajli",
-  },
-  {
-    src: "gallery7.jpg",
-    alt: "Detale koktajli",
-  },
-  {
-    src: "gallery8.jpg",
-    alt: "Detale koktajli",
-  },
-  {
-    src: "gallery9.jpg",
-    alt: "Detale koktajli",
-  },
-  {
-    src: "gallery10.jpeg",
-    alt: "Detale koktajli",
-  },
-  {
-    src: "gallery12.jpeg",
-    alt: "Detale koktajli",
-  },
-  {
-    src: "gallery13.jpeg",
-    alt: "Detale koktajli",
-  },
+type GalleryProps = {
+  data: {
+    naglowekSekcji: string;
+    opisSekcji: string;
+    galeria: {
+      nodes: {
+        sourceUrl: string;
+      }[];
+    };
+  };
+};
 
-];
-
-export default function Gallery() {
+export default function Gallery({ data }: GalleryProps) {
   const [selected, setSelected] = useState<number | null>(null);
+
+  const images = data.galeria.nodes.map((item) => ({
+    src: item.sourceUrl,
+    alt: "Realizacja Heaven Taste Bar",
+  }));
 
   const open = (i: number) => setSelected(i);
   const close = () => setSelected(null);
+
   const prev = () =>
     setSelected((s) =>
       s !== null ? (s - 1 + images.length) % images.length : null,
     );
+
   const next = () =>
     setSelected((s) => (s !== null ? (s + 1) % images.length : null));
 
@@ -74,11 +41,13 @@ export default function Gallery() {
           <span className="text-gold text-xs font-medium uppercase tracking-[0.2em]">
             Realizacje
           </span>
+
           <h2 className="font-serif text-3xl md:text-5xl font-semibold text-navy mt-4 tracking-tight">
-            Zobacz nas w działaniu
+            {data.naglowekSekcji}
           </h2>
+
           <p className="text-navy/45 text-lg font-light leading-relaxed mt-4">
-            Każde wydarzenie to osobna historia. Oto kilka z nich.
+            {data.opisSekcji}
           </p>
         </div>
 
@@ -110,6 +79,7 @@ export default function Gallery() {
           >
             <FiX className="w-7 h-7" />
           </button>
+
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -119,6 +89,7 @@ export default function Gallery() {
           >
             <FiChevronLeft className="w-8 h-8" />
           </button>
+
           <button
             onClick={(e) => {
               e.stopPropagation();
@@ -128,6 +99,7 @@ export default function Gallery() {
           >
             <FiChevronRight className="w-8 h-8" />
           </button>
+
           <img
             src={images[selected].src}
             alt={images[selected].alt}

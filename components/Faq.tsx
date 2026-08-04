@@ -3,40 +3,18 @@
 import { useState } from "react";
 import { FiPlus, FiMinus, FiArrowRight } from "react-icons/fi";
 
-const faqs = [
-  {
-    question: "Kiedy rozpoczyna się serwis koktajli?",
-    answer:
-      "To Wy wybieracie godzinę rozpoczęcia serwisu. Nasz bar jest zawsze gotowy przed wejściem pierwszych gości. Co ważne – serwis może rozpocząć się nawet do godziny później bez żadnych dopłat.",
-  },
-  {
-    question: "Kto zajmuje się zakupami i alkoholem?",
-    answer:
-      "Nasza usługa jest kompleksowa. Zajmujemy się wszystkim – od przygotowania zaplecza, przez składniki, aż po wyposażenie. Wy nie musicie się o nic martwić.",
-  },
-  {
-    question: "Czy bar może być ustawiony na zewnątrz?",
-    answer:
-      "Tak! Organizujemy bary w ogrodach i na zewnątrz. Potrzebujemy jedynie dostępu do prądu (standardowe 230V) oraz odpowiedniego podłoża i zadaszenia na wypadek niepogody.",
-  },
-  {
-    question: "Ilu barmanów obsługuje przyjęcie?",
-    answer:
-      "Do 40 gości obsługę zapewnia jeden doświadczony barman. Powyżej 40 osób zawsze przyjeżdża dwóch lub więcej barmanów, aby serwis przebiegał płynnie i bez kolejek.",
-  },
-  {
-    question: "Czy można wydłużyć czas pracy baru?",
-    answer:
-      "Oczywiście! Jesteśmy bardzo elastyczni. Możesz zdecydować się na przedłużenie pracy baru bezpośrednio podczas trwania przyjęcia lub ustalić to z nami na etapie wczesnych przygotowań.",
-  },
-  {
-    question: "Jak mogę zarezerwować termin?",
-    answer:
-      "Najlepiej po prostu do nas napisać przez formularz kontaktowy lub wiadomość. Chętnie odpowiemy na wszelkie pytania, umówimy się na spotkanie lub wyślemy umowę mailem.",
-  },
-];
+type FaqProps = {
+  data: {
+    naglowekSekcji: string;
+    opisSekcji: string;
+    pytania: {
+      pytanie: string;
+      odpowiedz: string;
+    }[];
+  };
+};
 
-export default function Faq() {
+export default function Faq({ data }: FaqProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const toggle = (i: number) => {
@@ -50,17 +28,18 @@ export default function Faq() {
           <span className="text-gold text-[10px] md:text-xs font-medium uppercase tracking-[0.2em]">
             FAQ
           </span>
+
           <h2 className="font-serif text-2xl md:text-4xl lg:text-5xl font-semibold text-navy mt-3 md:mt-4 tracking-tight">
-            Pytania i odpowiedzi
+            {data.naglowekSekcji}
           </h2>
+
           <p className="text-navy/45 text-sm md:text-lg font-light leading-relaxed mt-3 md:mt-4">
-            Najczęściej zadawane pytania i to, co warto wiedzieć przed
-            wydarzeniem.
+            {data.opisSekcji}
           </p>
         </div>
 
         <div className="space-y-3 md:space-y-4">
-          {faqs.map((faq, i) => (
+          {data.pytania.map((faq, i) => (
             <div
               key={i}
               className={`bg-white border rounded-xl md:rounded-2xl overflow-hidden transition-all duration-300 ${
@@ -78,12 +57,13 @@ export default function Faq() {
                     openIndex === i ? "text-gold-dark" : "text-navy"
                   }`}
                 >
-                  {faq.question}
+                  {faq.pytanie}
                 </span>
+
                 <div
                   className={`w-7 h-7 md:w-8 md:h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
                     openIndex === i
-                      ? "bg-gold/10 text-gold-dark rotate-0"
+                      ? "bg-gold/10 text-gold-dark"
                       : "bg-navy/5 text-navy/40"
                   }`}
                 >
@@ -104,7 +84,7 @@ export default function Faq() {
               >
                 <div className="overflow-hidden">
                   <p className="px-4 pb-4 md:px-6 md:pb-6 text-navy/50 text-xs md:text-sm font-light leading-relaxed">
-                    {faq.answer}
+                    {faq.odpowiedz}
                   </p>
                 </div>
               </div>
@@ -112,33 +92,19 @@ export default function Faq() {
           ))}
         </div>
 
-        {/* Sekcja zachęcająca do kontaktu */}
+        {/* CTA */}
         <div className="mt-12 md:mt-20 text-center">
           <div className="w-16 h-px bg-gold/30 mx-auto mb-8 md:mb-10" />
+
           <h3 className="font-serif text-xl md:text-3xl font-semibold text-navy tracking-tight">
             Zafascynował Cię nasz{" "}
             <span className="italic text-gold-dark">pomysł?</span>
           </h3>
+
           <p className="text-navy/40 text-sm md:text-base font-light leading-relaxed mt-3 md:mt-4 max-w-md mx-auto">
             Porozmawiajmy o szczegółach Twojego wydarzenia. Odezwiemy się w
             ciągu kilku godzin.
           </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mt-8 md:mt-10">
-            <a
-              href="#kontakt"
-              className="group bg-gold text-navy font-semibold text-sm px-8 py-3.5 md:py-4 rounded-xl hover:bg-gold-light transition-all duration-300 flex items-center gap-2 hover:shadow-lg hover:shadow-gold/20"
-            >
-              Wyślij zapytanie
-              <FiArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a
-              href="tel:669201223"
-              className="flex items-center gap-2 text-navy/50 hover:text-gold-dark text-sm font-medium transition-colors duration-300"
-            >
-              lub zadzwoń: 669 201 223
-            </a>
-          </div>
         </div>
       </div>
     </section>
