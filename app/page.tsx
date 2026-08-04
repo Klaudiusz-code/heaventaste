@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { Metadata } from "next";
 
 import Hero from "@/components/Hero";
@@ -10,7 +12,7 @@ import Social from "@/components/Social";
 import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 
-const GRAPHQL_URL = "http://heaventastebar.pl/graphql";
+const GRAPHQL_URL = "https://heaventastebar.pl/graphql";
 
 const QUERY_HOME = `
 query HomePage {
