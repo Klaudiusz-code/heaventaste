@@ -28,9 +28,12 @@ query HomePage {
       focusKeywords
       canonicalUrl
       openGraph {
-        title
-        description
-      }
+  title
+  description
+  image {
+    secureUrl
+  }
+}
     }
 
     sekcjaHero {
@@ -258,6 +261,11 @@ export async function generateMetadata(): Promise<Metadata> {
       description: seo?.openGraph?.description ?? seo?.description ?? "",
 
       type: "website",
+      images: [
+        {
+          url: seo?.openGraph?.image?.sourceUrl,
+        },
+      ],
     },
   };
 }
