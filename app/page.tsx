@@ -14,6 +14,7 @@ import Contact from "@/components/Contact";
 import Topbar from "@/components/TopBar";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import Testimonials from "@/components/Testimonials";
 
 const GRAPHQL_URL = "https://heaventastebar.pl/graphql";
 
@@ -28,12 +29,12 @@ query HomePage {
       focusKeywords
       canonicalUrl
       openGraph {
-  title
-  description
-  image {
-    secureUrl
-  }
-}
+        title
+        description
+        image {
+          secureUrl
+        }
+      }
     }
 
     sekcjaHero {
@@ -74,8 +75,8 @@ query HomePage {
       listServices {
         tytul
         opis
-  }
-}
+      }
+    }
 
     sekcjaPakiety {
       tytulSekcji
@@ -164,6 +165,20 @@ query HomePage {
       }
       zasieg
     }
+
+    sekcjaOpinie {
+      nagwlowekSekcji
+      descriptionTestimonials
+      opinie {
+        imie
+        rodzajEventu
+        opis
+      }
+      przycisk {
+        text
+        linkDoOpiniiGoogle
+      }
+    }
   }
 }
 `;
@@ -175,7 +190,7 @@ query GlobalSettings {
       numerTelefonu
       numerTelefonuWahtshap
       email
-      socialMedia{
+      socialMedia {
         facebook
         instagram
         tiktok
@@ -193,15 +208,12 @@ query GlobalSettings {
 async function getGlobalSettings() {
   const res = await fetch(GRAPHQL_URL, {
     method: "POST",
-
     headers: {
       "Content-Type": "application/json",
     },
-
     body: JSON.stringify({
       query: QUERY_GLOBAL_SETTINGS,
     }),
-
     cache: "no-store",
   });
 
@@ -244,22 +256,16 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: seo?.title ?? "Heaven Taste Bar | abc",
-
     description:
       seo?.description ??
       "Mobilny bar koktajlowy na wesela, eventy i wyjątkowe przyjęcia.",
-
     keywords: seo?.focusKeywords ?? undefined,
-
     alternates: {
       canonical: seo?.canonicalUrl ?? undefined,
     },
-
     openGraph: {
       title: seo?.openGraph?.title ?? seo?.title ?? "Heaven Taste Bar",
-
       description: seo?.openGraph?.description ?? seo?.description ?? "",
-
       type: "website",
       images: [
         {
@@ -272,37 +278,27 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function Home() {
   const data = await getHomePage();
-
   const settings = await getGlobalSettings();
-
   const page = data.page;
 
   return (
     <main>
       <Topbar data={settings} />
-
       <Navbar data={settings} />
       <Hero data={page.sekcjaHero} />
-
       <About
         data={{
           ...page.sekcjaOMnie,
           whatsapp: settings.numerTelefonuWahtshap,
         }}
       />
-
       <Services data={page.sekcjaUslugi} />
-
       <Packages data={page.sekcjaPakiety} />
-
       <Menu data={page.sekcjaMenu} />
-
       <Gallery data={page.sekcjaGaleria} />
-
+      <Testimonials data={page.sekcjaOpinie} />
       <Social data={page.sekcjaSocialMedia} />
-
       <Faq data={page.sekcjaPytaniaIOdpowiedzi} />
-
       <Contact
         data={{
           ...page.sekcjaKontakt,

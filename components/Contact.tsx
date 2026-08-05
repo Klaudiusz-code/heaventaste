@@ -34,15 +34,26 @@ export default function Contact({ data }: ContactProps) {
     setIsLoading(true);
 
     const form = e.currentTarget;
+    const formData = new FormData(form);
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const response = await fetch("https://formspree.io/f/xaewyyop", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error("Błąd podczas wysyłania formularza.");
+      }
 
       setSubmitted(true);
       form.reset();
     } catch (error) {
       console.error(error);
-      alert("Wystąpił błąd. Spróbuj ponownie.");
+      alert("Wystąpił błąd podczas wysyłania formularza.");
     } finally {
       setIsLoading(false);
 
@@ -134,6 +145,23 @@ export default function Contact({ data }: ContactProps) {
           <div className="lg:col-span-3">
             <div className="bg-[#0f2744] p-6 md:p-8 rounded-2xl border border-white/10">
               <form onSubmit={handleSubmit} className="space-y-6">
+        -
+                <input
+                  type="hidden"
+                  name="_subject"
+                  value="Nowe zapytanie - Heaven Taste Bar"
+                />
+
+                <input type="hidden" name="_language" value="pl" />
+
+                <input
+                  type="text"
+                  name="_gotcha"
+                  className="hidden"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+
                 <div className="grid md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm text-white/70 mb-2">
@@ -259,6 +287,8 @@ export default function Contact({ data }: ContactProps) {
                 <div className="flex gap-3">
                   <input
                     type="checkbox"
+                    name="privacyConsent"
+                    value="Tak"
                     required
                     className="mt-1 accent-[#C5A059]"
                   />
@@ -270,6 +300,7 @@ export default function Contact({ data }: ContactProps) {
                 </div>
 
                 <button
+                  type="submit"
                   disabled={isLoading || submitted}
                   className={`w-full rounded-xl py-4 font-medium flex justify-center items-center gap-2 transition ${
                     submitted
