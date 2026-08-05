@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
+import Script from "next/script";
 import {
   FiMail,
   FiPhone,
@@ -70,14 +71,22 @@ export default function Contact({ data }: ContactProps) {
     <section id="kontakt" className="py-16 md:py-24 lg:py-32 bg-navy">
       <div className="max-w-7xl mx-auto px-5 md:px-6 lg:px-8">
         <div className="grid lg:grid-cols-5 gap-10 lg:gap-16">
-          {/* Informacje */}
           <div className="lg:col-span-2">
             <span className="text-gold text-[10px] md:text-xs font-medium uppercase tracking-[0.2em]">
               Kontakt
             </span>
 
             <h2 className="font-serif text-2xl md:text-4xl lg:text-5xl font-semibold text-white mt-3 md:mt-4 tracking-tight leading-tight">
-              {data.naglowekSekcji}
+              {(() => {
+                const words = data.naglowekSekcji.split(" ");
+                const lastWord = words.pop();
+                return (
+                  <>
+                    {words.join(" ")}{" "}
+                    <span className="text-gold">{lastWord}</span>
+                  </>
+                );
+              })()}
             </h2>
 
             <p className="text-white/45 text-sm md:text-lg font-light leading-relaxed mt-4 md:mt-6">
@@ -85,7 +94,6 @@ export default function Contact({ data }: ContactProps) {
             </p>
 
             <div className="space-y-5 md:space-y-6 mt-8 md:mt-10">
-              {/* Telefon */}
               <a
                 href={`tel:${data.telefon}`}
                 className="flex items-center gap-3 md:gap-4 group"
@@ -103,15 +111,11 @@ export default function Contact({ data }: ContactProps) {
                 </div>
               </a>
 
-              {/* Email */}
               <a
                 href={`mailto:${data.email}`}
                 className="flex items-center gap-3 md:gap-4 group"
               >
-                <div
-                  className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gold/10 flex  
-                items-center justify-center"
-                >
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gold/10 flex items-center justify-center">
                   <FiMail className="text-gold" />
                 </div>
 
@@ -124,7 +128,6 @@ export default function Contact({ data }: ContactProps) {
                 </div>
               </a>
 
-              {/* Zasięg */}
               <div className="flex items-center gap-3 md:gap-4">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gold/10 flex items-center justify-center">
                   <FiMapPin className="text-gold" />
@@ -141,11 +144,9 @@ export default function Contact({ data }: ContactProps) {
             </div>
           </div>
 
-          {/* Formularz */}
           <div className="lg:col-span-3">
             <div className="bg-[#0f2744] p-6 md:p-8 rounded-2xl border border-white/10">
               <form onSubmit={handleSubmit} className="space-y-6">
-        -
                 <input
                   type="hidden"
                   name="_subject"
@@ -329,7 +330,67 @@ export default function Contact({ data }: ContactProps) {
             </div>
           </div>
         </div>
+
+        <div className="mt-16 lg:mt-20">
+          <div className="text-center mb-8">
+            <p className="text-white/40 text-sm mt-2 max-w-md mx-auto">
+              Sprawdź autentyczne opinie par młodych na portalu Wesele z Klasą
+            </p>
+          </div>
+
+          <div className="max-w-5xl mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-2xl shadow-black/20">
+            <div
+              style={{
+                width: "100%",
+                maxWidth: "100%",
+                overflow: "hidden",
+                backgroundColor: "#0f2744",
+              }}
+              className="wzk-widget iframe-height"
+              data-wzk-widget-type="type4"
+              data-wzk-notice="45810"
+            >
+              <div
+                style={{
+                  backgroundColor: "#0f2744",
+                  textAlign: "center",
+                  padding: "16px",
+                  fontSize: "12px",
+                  lineHeight: "12px",
+                }}
+              >
+                <a
+                  className="wzk-accent-color"
+                  title="Heaven Taste Bar"
+                  href="https://www.weselezklasa.pl/ogloszenia-weselne/heaven-taste-mobilne-uslugi-barmanskie,45810/#opinie"
+                  rel="nofollow"
+                  target="_blank"
+                  style={{
+                    color: "rgba(255,255,255,0.4)",
+                    textDecoration: "none",
+                  }}
+                >
+                  Heaven Taste Bar
+                </a>
+                <img
+                  style={{
+                    margin: "8px auto 0",
+                    display: "block",
+                    opacity: 0.4,
+                  }}
+                  src="https://widgets.4wzk.pl/dist/img/footer-logo.svg"
+                  alt="Wesele z klasą"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <Script
+        src="https://widgets.4wzk.pl/dist/js/widget.js"
+        strategy="lazyOnload"
+      />
     </section>
   );
 }
