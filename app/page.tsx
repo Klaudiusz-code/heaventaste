@@ -66,13 +66,13 @@ query HomePage {
     }
 
     sekcjaUslugi {
-     tytulSekcji
+      tytulSekcji
       opisSekcji
       listServices {
         tytul
         opis
-      }
-    }
+  }
+}
 
     sekcjaPakiety {
       tytulSekcji
