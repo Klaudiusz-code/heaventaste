@@ -4,8 +4,8 @@ import { FaCocktail } from "react-icons/fa";
 
 interface ServicesProps {
   data: {
-    naglowek: string;
-    opis: string;
+    tytulSekcji: string;
+    opisSekcji: string;
 
     listServices: {
       tytul: string;
@@ -30,12 +30,12 @@ export default function Services({ data }: ServicesProps) {
             </span>
 
             <h2 className="font-serif text-2xl md:text-4xl lg:text-5xl font-semibold text-white mt-3 md:mt-4 tracking-tight">
-              {data.naglowek}
+              {data.tytulSekcji}
             </h2>
           </div>
 
           <p className="text-white/35 text-sm md:text-base font-light leading-relaxed max-w-sm md:text-right">
-            {data.opis}
+            {data.opisSekcji}
           </p>
         </div>
 

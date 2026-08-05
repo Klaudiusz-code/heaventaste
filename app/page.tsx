@@ -66,8 +66,8 @@ query HomePage {
     }
 
     sekcjaUslugi {
-      naglowek
-      opis
+     tytulSekcji
+      opisSekcji
       listServices {
         tytul
         opis
@@ -159,6 +159,7 @@ query HomePage {
       rodzajeprzyjec {
         nazwa
       }
+      zasieg
     }
   }
 }

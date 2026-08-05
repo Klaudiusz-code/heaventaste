@@ -21,6 +21,7 @@ type ContactProps = {
 
     telefon: string;
     email: string;
+    zasieg: string;
   };
 };
 
@@ -123,7 +124,7 @@ export default function Contact({ data }: ContactProps) {
                     Zasięg
                   </div>
 
-                  <div className="text-white">Cała Polska</div>
+                  <div className="text-white">{data.zasieg}</div>
                 </div>
               </div>
             </div>
