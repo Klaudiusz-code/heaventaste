@@ -90,10 +90,6 @@ export default function Social({ data }: SocialProps) {
                 {social.name}
               </h3>
 
-              <p className="text-white/30 text-xs md:text-sm font-light mb-4 md:mb-8">
-                {social.handle}
-              </p>
-
               <div className="mt-auto flex items-center gap-2 text-xs md:text-sm font-medium text-gold/70 group-hover:text-gold transition-colors duration-300">
                 <span>{social.action}</span>
                 <FiArrowUpRight className="w-3.5 h-3.5 md:w-4 md:h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
