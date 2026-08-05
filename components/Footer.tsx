@@ -2,24 +2,43 @@ import Image from "next/image";
 import { FiInstagram, FiFacebook, FiMail, FiPhone } from "react-icons/fi";
 import { FaTiktok } from "react-icons/fa";
 
-export default function Footer() {
+type FooterProps = {
+  data: {
+    numerTelefonu: string;
+    email: string;
+    socialMedia: {
+      facebook: string;
+      instagram: string;
+      tiktok: string;
+    };
+    logo: {
+      node: {
+        sourceUrl: string;
+      };
+    };
+  };
+};
+
+export default function Footer({ data }: FooterProps) {
   return (
     <footer className="bg-navy-dark border-t border-white/[0.05]">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* LOGO + OPIS */}
           <div className="lg:col-span-2">
             <a href="#" className="flex items-center gap-3 group w-fit">
               <div className="h-12 w-12 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
                 <Image
-                  src="/logo-taste.svg"
+                  src={data.logo.node.sourceUrl}
                   alt="Heaven Taste Bar"
                   width={54}
                   height={60}
                   className="object-contain"
-                  unoptimized={true}
+                  unoptimized
                 />
               </div>
             </a>
+
             <p className="text-white/30 text-sm font-light leading-relaxed mt-6 max-w-sm">
               Elegancki mobilny bar na przyjęcia, wesela i eventy firmowe.
               Tworzymy koktajle, które zostają w pamięci na długo po zakończeniu
@@ -27,10 +46,12 @@ export default function Footer() {
             </p>
           </div>
 
+          {/* MENU */}
           <div>
             <h4 className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-6">
               Nawigacja
             </h4>
+
             <ul className="space-y-3">
               {[
                 { href: "#o-nas", label: "O nas" },
@@ -43,7 +64,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-white/30 hover:text-gold text-sm transition-colors duration-300"
+                    className="text-white/30 hover:text-gold text-sm transition-colors"
                   >
                     {link.label}
                   </a>
@@ -52,48 +73,67 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* KONTAKT */}
           <div>
             <h4 className="text-white/50 text-xs font-semibold uppercase tracking-widest mb-6">
               Kontakt
             </h4>
+
             <ul className="space-y-4">
               <li>
                 <a
-                  href="tel:669201223"
-                  className="flex items-center gap-3 text-white/30 hover:text-gold text-sm transition-colors duration-300"
+                  href={`tel:${data.numerTelefonu}`}
+                  className="flex items-center gap-3 text-white/30 hover:text-gold text-sm transition-colors"
                 >
                   <FiPhone className="w-4 h-4 text-gold/60" />
-                  669 201 223
+                  {data.numerTelefonu}
                 </a>
               </li>
+
               <li>
                 <a
-                  href="mailto: kontakt@heaventastebar.pl"
-                  className="flex items-center gap-3 text-white/30 hover:text-gold text-sm transition-colors duration-300"
+                  href={`mailto:${data.email}`}
+                  className="flex items-center gap-3 text-white/30 hover:text-gold text-sm transition-colors"
                 >
                   <FiMail className="w-4 h-4 text-gold/60" />
-                  kontakt@heaventastebar.pl
+                  {data.email}
                 </a>
               </li>
+
+              {/* SOCIAL */}
               <li className="flex items-center gap-3 pt-2">
-                {[
-                  { icon: FiInstagram, href: "#" },
-                  { icon: FiFacebook, href: "#" },
-                  { icon: FaTiktok, href: "#" },
-                ].map((social, i) => (
-                  <a
-                    key={i}
-                    href={social.href}
-                    className="w-9 h-9 rounded-lg bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-white/30 hover:text-gold hover:bg-white/[0.06] hover:border-gold/20 transition-all duration-300"
-                  >
-                    <social.icon className="w-4 h-4" />
-                  </a>
-                ))}
+                <a
+                  href={data.socialMedia.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-lg bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-white/30 hover:text-gold transition-all"
+                >
+                  <FiInstagram className="w-4 h-4" />
+                </a>
+
+                <a
+                  href={data.socialMedia.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-lg bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-white/30 hover:text-gold transition-all"
+                >
+                  <FiFacebook className="w-4 h-4" />
+                </a>
+
+                <a
+                  href={data.socialMedia.tiktok}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-lg bg-white/[0.03] border border-white/[0.06] flex items-center justify-center text-white/30 hover:text-gold transition-all"
+                >
+                  <FaTiktok className="w-4 h-4" />
+                </a>
               </li>
             </ul>
           </div>
         </div>
 
+        {/* STOPKA */}
         <div className="mt-16 pt-8 border-t border-white/[0.05] flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/20 text-xs text-center md:text-left">
             © {new Date().getFullYear()} Heaven Taste Bar. Wszystkie prawa
@@ -104,7 +144,9 @@ export default function Footer() {
             <a href="#" className="hover:text-white/40 transition-colors">
               Polityka Prywatności
             </a>
+
             <span>•</span>
+
             <a
               href="https://klaudiuszdev.pl"
               target="_blank"

@@ -11,6 +11,9 @@ import Gallery from "@/components/Gallery";
 import Social from "@/components/Social";
 import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
+import Topbar from "@/components/TopBar";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const GRAPHQL_URL = "https://heaventastebar.pl/graphql";
 
@@ -161,20 +164,63 @@ query HomePage {
 }
 `;
 
+const QUERY_GLOBAL_SETTINGS = `
+query GlobalSettings {
+  globalneUstawienia {
+    globalneUstawieniaV2 {
+      numerTelefonu
+      numerTelefonuWahtshap
+      email
+      socialMedia{
+        facebook
+        instagram
+        tiktok
+      }
+      logo {
+        node {
+          sourceUrl
+        }
+      }
+    }
+  }
+}
+`;
+
+async function getGlobalSettings() {
+  const res = await fetch(GRAPHQL_URL, {
+    method: "POST",
+
+    headers: {
+      "Content-Type": "application/json",
+    },
+
+    body: JSON.stringify({
+      query: QUERY_GLOBAL_SETTINGS,
+    }),
+
+    cache: "no-store",
+  });
+
+  const json = await res.json();
+
+  if (json.errors) {
+    console.error("GraphQL Global Settings Error:", json.errors);
+    throw new Error("GraphQL global settings error");
+  }
+
+  return json.data.globalneUstawienia.globalneUstawieniaV2;
+}
+
 async function getHomePage() {
   const res = await fetch(GRAPHQL_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-
     body: JSON.stringify({
       query: QUERY_HOME,
     }),
-
-    next: {
-      revalidate: 60,
-    },
+    cache: "no-store",
   });
 
   const json = await res.json();
@@ -218,13 +264,23 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Home() {
   const data = await getHomePage();
 
+  const settings = await getGlobalSettings();
+
   const page = data.page;
 
   return (
     <main>
+      <Topbar data={settings} />
+
+      <Navbar data={settings} />
       <Hero data={page.sekcjaHero} />
 
-      <About data={page.sekcjaOMnie} />
+      <About
+        data={{
+          ...page.sekcjaOMnie,
+          whatsapp: settings.numerTelefonuWahtshap,
+        }}
+      />
 
       <Services data={page.sekcjaUslugi} />
 
@@ -238,7 +294,14 @@ export default async function Home() {
 
       <Faq data={page.sekcjaPytaniaIOdpowiedzi} />
 
-      <Contact data={page.sekcjaKontakt} />
+      <Contact
+        data={{
+          ...page.sekcjaKontakt,
+          telefon: settings.numerTelefonu,
+          email: settings.email,
+        }}
+      />
+      <Footer data={settings} />
     </main>
   );
 }

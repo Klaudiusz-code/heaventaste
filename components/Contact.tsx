@@ -14,9 +14,13 @@ type ContactProps = {
   data: {
     naglowekSekcji: string;
     opisSekcji: string;
+
     rodzajeprzyjec: {
       nazwa: string;
     }[];
+
+    telefon: string;
+    email: string;
   };
 };
 
@@ -69,8 +73,9 @@ export default function Contact({ data }: ContactProps) {
             </p>
 
             <div className="space-y-5 md:space-y-6 mt-8 md:mt-10">
+              {/* Telefon */}
               <a
-                href="tel:669201223"
+                href={`tel:${data.telefon}`}
                 className="flex items-center gap-3 md:gap-4 group"
               >
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gold/10 flex items-center justify-center">
@@ -81,15 +86,20 @@ export default function Contact({ data }: ContactProps) {
                   <div className="text-white/35 text-xs uppercase tracking-widest">
                     Telefon
                   </div>
-                  <div className="text-white">669 201 223</div>
+
+                  <div className="text-white">{data.telefon}</div>
                 </div>
               </a>
 
+              {/* Email */}
               <a
-                href="mailto:kontakt@heaventastebar.pl"
+                href={`mailto:${data.email}`}
                 className="flex items-center gap-3 md:gap-4 group"
               >
-                <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gold/10 flex items-center justify-center">
+                <div
+                  className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gold/10 flex  
+                items-center justify-center"
+                >
                   <FiMail className="text-gold" />
                 </div>
 
@@ -97,12 +107,12 @@ export default function Contact({ data }: ContactProps) {
                   <div className="text-white/35 text-xs uppercase tracking-widest">
                     Email
                   </div>
-                  <div className="text-white break-all">
-                    kontakt@heaventastebar.pl
-                  </div>
+
+                  <div className="text-white break-all">{data.email}</div>
                 </div>
               </a>
 
+              {/* Zasięg */}
               <div className="flex items-center gap-3 md:gap-4">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-gold/10 flex items-center justify-center">
                   <FiMapPin className="text-gold" />

@@ -19,6 +19,8 @@ interface AboutProps {
     benefity: {
       tekst: string;
     }[];
+
+    whatsapp: string;
   };
 }
 
@@ -49,8 +51,6 @@ export default function About({ data }: AboutProps) {
 
       <div className="max-w-7xl mx-auto px-5 md:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
-          {/* VIDEO */}
-
           <div className="relative group md:max-w-lg lg:max-w-none mx-auto lg:mx-0 w-full">
             <div className="aspect-[4/5] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden border-2 border-gold/20 shadow-2xl shadow-navy/20 relative bg-navy">
               <video
@@ -95,8 +95,6 @@ export default function About({ data }: AboutProps) {
             <div className="absolute -top-4 -left-4 w-32 h-32 border-2 border-gold/10 rounded-2xl -z-10 hidden md:block" />
           </div>
 
-          {/* CONTENT */}
-
           <div>
             <div className="flex items-center gap-4 mb-4 md:mb-6">
               <div className="h-px w-8 bg-gold" />
@@ -116,15 +114,7 @@ export default function About({ data }: AboutProps) {
             <div className="w-16 h-[2px] bg-gold/30 my-5 md:my-8" />
 
             <div
-              className="
-              text-navy/60 
-              text-sm md:text-base lg:text-lg 
-              font-light 
-              leading-relaxed
-              [&_strong]:text-navy/90
-              [&_strong]:font-medium
-              [&_p]:mb-3
-              "
+              className="text-navy/60 text-sm md:text-base lg:text-lg font-light leading-relaxed [&_strong]:text-navy/90 [&_strong]:font-medium [&_p]:mb-3"
               dangerouslySetInnerHTML={{
                 __html: data.opis,
               }}
@@ -132,16 +122,7 @@ export default function About({ data }: AboutProps) {
 
             <div className="bg-cream/60 border-l-4 border-gold pl-5 py-4 mt-6 md:mt-8 rounded-r-lg">
               <p
-                className="
-                text-navy/70 
-                text-xs md:text-sm 
-                font-light 
-                leading-relaxed 
-                italic
-                [&_strong]:text-navy
-                [&_strong]:font-medium
-                [&_strong]:not-italic
-                "
+                className="text-navy/70 text-xs md:text-sm font-light leading-relaxed italic [&_strong]:text-navy [&_strong]:font-medium [&_strong]:not-italic"
                 dangerouslySetInnerHTML={{
                   __html: data.cytat,
                 }}
@@ -154,45 +135,13 @@ export default function About({ data }: AboutProps) {
                   key={index}
                   className="flex items-center gap-2.5 md:gap-3 group/feat"
                 >
-                  <div
-                    className="
-                    w-9 h-9 
-                    md:w-10 md:h-10 
-                    rounded-lg 
-                    md:rounded-xl 
-                    bg-gold/10 
-                    flex 
-                    items-center 
-                    justify-center 
-                    flex-shrink-0
-                    group-hover/feat:bg-gold/20
-                    transition-colors
-                    duration-300
-                    "
-                  >
-                    <div
-                      className="
-                    w-4 h-4 
-                    rounded-full 
-                    bg-gold 
-                    flex 
-                    items-center 
-                    justify-center
-                    "
-                    >
+                  <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg md:rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-4 h-4 rounded-full bg-gold flex items-center justify-center">
                       <FiCheck className="w-3 h-3 text-white" />
                     </div>
                   </div>
 
-                  <span
-                    className="
-                    text-navy/70 
-                    text-[11px] 
-                    md:text-sm 
-                    font-medium 
-                    leading-tight
-                    "
-                  >
+                  <span className="text-navy/70 text-[11px] md:text-sm font-medium leading-tight">
                     {item.tekst}
                   </span>
                 </div>
@@ -200,12 +149,12 @@ export default function About({ data }: AboutProps) {
             </div>
 
             <a
-              href="https://wa.me/48669210223"
+              href={`https://wa.me/48${data.whatsapp}`}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-8 md:mt-10 inline-flex items-center gap-3 bg-[#25D366] text-white text-sm font-semibold px-7 py-4 rounded-xl hover:bg-[#20bd5a] transition-all duration-300 hover:shadow-xl hover:shadow-green-500/25 hover:-translate-y-0.5 group/btn"
             >
-              <FaWhatsapp className="w-5 h-5 group-hover/btn:scale-110 transition-transform" />
+              <FaWhatsapp className="w-5 h-5 group-hover:scale-110 transition-transform" />
               Szybki kontakt na WhatsApp
             </a>
           </div>

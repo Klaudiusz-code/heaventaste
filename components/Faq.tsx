@@ -91,21 +91,6 @@ export default function Faq({ data }: FaqProps) {
             </div>
           ))}
         </div>
-
-        {/* CTA */}
-        <div className="mt-12 md:mt-20 text-center">
-          <div className="w-16 h-px bg-gold/30 mx-auto mb-8 md:mb-10" />
-
-          <h3 className="font-serif text-xl md:text-3xl font-semibold text-navy tracking-tight">
-            Zafascynował Cię nasz{" "}
-            <span className="italic text-gold-dark">pomysł?</span>
-          </h3>
-
-          <p className="text-navy/40 text-sm md:text-base font-light leading-relaxed mt-3 md:mt-4 max-w-md mx-auto">
-            Porozmawiajmy o szczegółach Twojego wydarzenia. Odezwiemy się w
-            ciągu kilku godzin.
-          </p>
-        </div>
       </div>
     </section>
   );
