@@ -133,7 +133,6 @@ export default function Footer({ data }: FooterProps) {
           </div>
         </div>
 
-        {/* STOPKA */}
         <div className="mt-16 pt-8 border-t border-white/[0.05] flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-white/20 text-xs text-center md:text-left">
             © {new Date().getFullYear()} Heaven Taste Bar. Wszystkie prawa
@@ -141,7 +140,7 @@ export default function Footer({ data }: FooterProps) {
           </p>
 
           <div className="flex items-center gap-4 text-white/20 text-xs">
-            <a href="#" className="hover:text-white/40 transition-colors">
+            <a href="/polityka-prywatnosci" className="hover:text-white/40 transition-colors">
               Polityka Prywatności
             </a>
 
@@ -153,7 +152,7 @@ export default function Footer({ data }: FooterProps) {
               rel="noopener noreferrer"
               className="hover:text-gold/50 transition-colors"
             >
-              Realizacja: klaudiuszdev
+              Realizacja: klaudiuszdev.pl
             </a>
           </div>
         </div>

@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  plugins: [
+  require("@tailwindcss/typography"),
+],
   images: {
     remotePatterns: [
       {
