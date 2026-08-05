@@ -55,7 +55,7 @@ export default function Navbar({ data }: NavbarProps) {
           {/* Logo */}
           <a
             href="#"
-            className="flex items-center -ml-6 lg:-ml-8 pl-6 lg:pl-8 group"
+            className="flex items-center -ml-4 lg:-ml-10 pl-6 lg:pl-8 group"
           >
             <div className="h-20 w-16 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
               <Image
@@ -107,7 +107,7 @@ export default function Navbar({ data }: NavbarProps) {
                 href="#kontakt"
                 className="bg-gold text-navy text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-gold-light transition-colors duration-300"
               >
-                Zarezerwuj
+                Sprawdź termin
               </a>
 
               {/* Instagram */}
@@ -168,7 +168,7 @@ export default function Navbar({ data }: NavbarProps) {
               onClick={() => setIsOpen(false)}
               className="flex-1 text-center bg-gold text-navy text-sm font-semibold px-6 py-3 rounded-xl"
             >
-              Zarezerwuj
+              Sprawdź termin
             </a>
 
             {data.socialMedia.instagram && (

@@ -333,7 +333,7 @@ export default function Contact({ data }: ContactProps) {
 
         <div className="mt-16 lg:mt-20">
           <div className="text-center mb-8">
-            <p className="text-white/40 text-sm mt-2 max-w-md mx-auto">
+            <p className="text-white/40 text-[12px] mt-2 max-w-lg mx-auto">
               Sprawdź autentyczne opinie par młodych na portalu Wesele z Klasą
             </p>
           </div>

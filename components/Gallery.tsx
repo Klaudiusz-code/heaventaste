@@ -56,12 +56,12 @@ export default function Gallery({ data }: GalleryProps) {
             <button
               key={i}
               onClick={() => open(i)}
-              className="group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/3] focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+              className="group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/5] focus:outline-none focus-visible:ring-2 focus-visible:ring-gold"
             >
               <img
                 src={img.src}
                 alt={img.alt}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
               />
             </button>
           ))}

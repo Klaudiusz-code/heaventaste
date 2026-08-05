@@ -36,8 +36,10 @@ query HomePage {
         }
       }
     }
-
     sekcjaHero {
+    button{
+      text
+    }
       slides {
         imageHero {
           node {
