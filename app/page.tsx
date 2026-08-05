@@ -114,7 +114,9 @@ query HomePage {
         opis
       }
 
-      stopkaSekcji
+      naglowekSekcji
+      tytulKartyIndywidualnej
+      opisKartyIndywidualnej
     }
 
     sekcjaGaleria {

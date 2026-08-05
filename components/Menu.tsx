@@ -11,6 +11,8 @@ type MenuProps = {
       tytul: string;
       opis: string;
     };
+    tytulKartyIndywidualnej: string;
+    opisKartyIndywidualnej: string;
     stopkaSekcji: string;
   };
 };
@@ -19,7 +21,6 @@ export default function Menu({ data }: MenuProps) {
   return (
     <section id="menu" className="py-16 md:py-24 lg:py-32 bg-cream">
       <div className="max-w-6xl mx-auto px-5 md:px-6 lg:px-8">
-        {/* Nagłówek */}
         <div className="text-center max-w-2xl mx-auto mb-10 md:mb-16">
           <span className="text-gold text-[10px] md:text-xs font-medium uppercase tracking-[0.25em]">
             {data.nazwaMalejSekcji}
@@ -34,7 +35,6 @@ export default function Menu({ data }: MenuProps) {
           </p>
         </div>
 
-        {/* Lista koktajli */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-5 md:gap-y-6 max-w-4xl mx-auto">
           {data.listaKoktajli.map((item, i) => (
             <div key={i} className="group transition-all duration-300">
@@ -53,7 +53,6 @@ export default function Menu({ data }: MenuProps) {
           ))}
         </div>
 
-        {/* Od barmana */}
         <div className="mt-10 md:mt-14 max-w-md mx-auto">
           <div className="flex items-center gap-3 mb-4">
             <div className="h-px flex-1 bg-gold/30" />
@@ -76,7 +75,22 @@ export default function Menu({ data }: MenuProps) {
           </div>
         </div>
 
-        {/* Stopka */}
+        <div className="mt-12 md:mt-16 max-w-2xl mx-auto">
+          <div className="relative bg-white/70 backdrop-blur-sm border border-gold/20 rounded-2xl px-6 py-8 md:px-10 md:py-10 text-center shadow-sm">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-cream px-4">
+              <span className="text-gold/60 text-sm tracking-widest">✦</span>
+            </div>
+
+            <h4 className="font-serif text-base md:text-lg font-medium text-navy mb-2">
+              {data.tytulKartyIndywidualnej}
+            </h4>
+
+            <p className="text-navy/50 text-sm md:text-base font-light leading-relaxed">
+              {data.opisKartyIndywidualnej}
+            </p>
+          </div>
+        </div>
+
         <div className="text-center mt-10 md:mt-14">
           <p className="text-navy/40 text-xs md:text-sm italic font-light">
             {data.stopkaSekcji}

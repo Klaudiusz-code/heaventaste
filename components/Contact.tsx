@@ -164,7 +164,8 @@ export default function Contact({ data }: ContactProps) {
                 />
 
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div>
+                  {/* DODANO min-w-0 */}
+                  <div className="min-w-0">
                     <label className="block text-sm text-white/70 mb-2">
                       Imię i nazwisko
                     </label>
@@ -177,7 +178,8 @@ export default function Contact({ data }: ContactProps) {
                     />
                   </div>
 
-                  <div>
+                  {/* DODANO min-w-0 */}
+                  <div className="min-w-0">
                     <label className="block text-sm text-white/70 mb-2">
                       Numer telefonu
                     </label>
@@ -190,7 +192,8 @@ export default function Contact({ data }: ContactProps) {
                     />
                   </div>
 
-                  <div>
+                  {/* DODANO min-w-0 */}
+                  <div className="min-w-0">
                     <label className="block text-sm text-white/70 mb-2">
                       Email
                     </label>
@@ -204,7 +207,8 @@ export default function Contact({ data }: ContactProps) {
                     />
                   </div>
 
-                  <div>
+                  {/* DODANO min-w-0 - to naprawia wyskakujący input daty */}
+                  <div className="min-w-0">
                     <label className="block text-sm text-white/70 mb-2">
                       Data przyjęcia
                     </label>
@@ -217,7 +221,8 @@ export default function Contact({ data }: ContactProps) {
                     />
                   </div>
 
-                  <div>
+                  {/* DODANO min-w-0 */}
+                  <div className="min-w-0">
                     <label className="block text-sm text-white/70 mb-2">
                       Miejscowość / Sala
                     </label>
@@ -230,7 +235,8 @@ export default function Contact({ data }: ContactProps) {
                     />
                   </div>
 
-                  <div>
+                  {/* DODANO min-w-0 */}
+                  <div className="min-w-0">
                     <label className="block text-sm text-white/70 mb-2">
                       Rodzaj przyjęcia
                     </label>
@@ -257,7 +263,8 @@ export default function Contact({ data }: ContactProps) {
                     </select>
                   </div>
 
-                  <div className="md:col-span-2">
+                  {/* DODANO min-w-0 */}
+                  <div className="min-w-0 md:col-span-2">
                     <label className="block text-sm text-white/70 mb-2">
                       Liczba gości
                     </label>
