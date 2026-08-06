@@ -132,7 +132,7 @@ export default function Hero({ data }: HeroProps) {
                 <div className="absolute bottom-0 left-0">
                   <a
                     href="#kontakt"
-                    className="group inline-flex items-center gap-2 sm:gap-3 bg-gold text-navy font-semibold text-xs sm:text-sm px-5 sm:px-8 py-3 sm:py-3.5 md:py-4 rounded-lg sm:rounded-xl hover:bg-gold-light transition-all duration-300"
+                    className="group inline-flex items-center justify-center gap-2 sm:gap-3 bg-gold text-navy font-semibold text-xs sm:text-sm px-5 sm:px-8 h-12 rounded-lg sm:rounded-xl hover:bg-gold-light transition-all duration-300 whitespace-nowrap"
                   >
                     {data.button.text}
                     <FiArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
