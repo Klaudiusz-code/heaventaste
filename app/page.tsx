@@ -123,12 +123,12 @@ query HomePage {
       naglowekSekcji
       opisSekcji
 
-      galeria {
+      galeria(first: 100) {
         nodes {
           sourceUrl
         }
-      }
     }
+  }
 
     sekcjaSocialMedia {
       naglowekSekcji
