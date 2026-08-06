@@ -46,16 +46,16 @@ export default function Navbar({ data }: NavbarProps) {
 
   return (
     <nav
-      className={`fixed top-10 left-0 right-0 z-40 transition-all duration-500 ${
+      className={`fixed top-10 left-0 right-0 py-1 z-40 transition-all duration-500 ${
         scrolled ? "bg-navy shadow-lg shadow-black/20" : "bg-transparent"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+          {/* Logo - lewa strona */}
           <a
             href="#"
-            className="flex items-center -ml-4 lg:-ml-10 pl-6 lg:pl-8 group"
+            className="flex items-center -ml-4 lg:-ml-10 pl-6 lg:pl-8 group flex-shrink-0"
           >
             <div className="h-20 w-16 flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
               <Image
@@ -69,8 +69,8 @@ export default function Navbar({ data }: NavbarProps) {
             </div>
           </a>
 
-          {/* Desktop */}
-          <div className="hidden lg:flex items-center">
+          {/* Linki - wycentrowane, tylko desktop */}
+          <div className="hidden lg:flex items-center absolute left-1/2 -translate-x-1/2">
             {links.map((link, i) => (
               <Fragment key={link.href}>
                 {i > 0 && (
@@ -95,43 +95,37 @@ export default function Navbar({ data }: NavbarProps) {
                 </a>
               </Fragment>
             ))}
-
-            <div
-              className={`w-px h-5 mx-4 ${
-                scrolled ? "bg-white/10" : "bg-navy/10"
-              }`}
-            />
-
-            <div className="flex items-center gap-2">
-              <a
-                href="#kontakt"
-                className="bg-gold text-navy text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-gold-light transition-colors duration-300"
-              >
-                Sprawdź termin
-              </a>
-
-              {/* Instagram */}
-              {data.socialMedia.instagram && (
-                <a
-                  href={data.socialMedia.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
-                    scrolled
-                      ? "bg-white/5 border border-white/10 text-white/60 hover:text-gold hover:bg-gold/10 hover:border-gold/30"
-                      : "bg-navy/5 border border-navy/10 text-navy/50 hover:text-gold-dark hover:bg-gold/10 hover:border-gold/30"
-                  }`}
-                >
-                  <FaInstagram className="w-4 h-4" />
-                </a>
-              )}
-            </div>
           </div>
 
-          {/* Mobile button */}
+          {/* Prawa strona - przycisk + Instagram, tylko desktop */}
+          <div className="hidden lg:flex items-center gap-2 flex-shrink-0">
+            <a
+              href="#kontakt"
+              className="bg-gold text-navy text-sm font-semibold px-5 py-2.5 rounded-xl hover:bg-gold-light transition-colors duration-300"
+            >
+              Sprawdź termin
+            </a>
+
+            {data.socialMedia.instagram && (
+              <a
+                href={data.socialMedia.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 ${
+                  scrolled
+                    ? "bg-white/5 border border-white/10 text-white/60 hover:text-gold hover:bg-gold/10 hover:border-gold/30"
+                    : "bg-navy/5 border border-navy/10 text-navy/50 hover:text-gold-dark hover:bg-gold/10 hover:border-gold/30"
+                }`}
+              >
+                <FaInstagram className="w-4 h-4" />
+              </a>
+            )}
+          </div>
+
+          {/* Przycisk mobilny - prawa strona */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden p-2 transition-colors ${
+            className={`lg:hidden p-2 transition-colors flex-shrink-0 ${
               scrolled ? "text-white" : "text-navy"
             }`}
           >
@@ -144,7 +138,7 @@ export default function Navbar({ data }: NavbarProps) {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Menu mobilne */}
       <div
         className={`lg:hidden transition-all duration-500 overflow-hidden ${
           isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"

@@ -75,15 +75,11 @@ export default function Menu({ data }: MenuProps) {
           </div>
         </div>
 
-        <div className="mt-12 md:mt-16 max-w-2xl mx-auto">
-          <div className="relative bg-white/70 backdrop-blur-sm border border-gold/20 rounded-2xl px-6 py-8 md:px-10 md:py-10 text-center shadow-sm">
+        <div className="mt-12  max-w-2xl mx-auto">
+          <div className="relative bg-white/70 backdrop-blur-sm border border-gold/20 rounded-2xl px-6 py-8 md:px-10 md:py-6 text-center shadow-sm">
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-cream px-4">
               <span className="text-gold/60 text-sm tracking-widest">✦</span>
             </div>
-
-            <h4 className="font-serif text-base md:text-lg font-medium text-navy mb-2">
-              {data.tytulKartyIndywidualnej}
-            </h4>
 
             <p className="text-navy/50 text-sm md:text-base font-light leading-relaxed">
               {data.opisKartyIndywidualnej}

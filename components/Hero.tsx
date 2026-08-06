@@ -55,7 +55,7 @@ export default function Hero({ data }: HeroProps) {
   if (!slides.length) return null;
 
   return (
-    <section className="bg-white pt-[120px] sm:pt-[130px] lg:pt-[140px] pb-0 lg:pb-16 relative">
+    <section className="bg-white pt-[132px] sm:pt-[136px] md:pt-[140px] lg:pt-[125px] pb-0 lg:pb-16 relative">
       <div
         className="mx-auto px-0 lg:px-8 relative"
         style={{ maxWidth: "1700px" }}
@@ -111,29 +111,33 @@ export default function Hero({ data }: HeroProps) {
             }}
           >
             <div className="w-full px-5 sm:px-6 md:px-20 lg:px-28">
-              <div className="max-w-xl mb-28 sm:mb-32 md:mb-0">
-                <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/20 rounded-full px-3.5 sm:px-5 py-1.5 sm:py-2 mb-5 md:mb-8 backdrop-blur-sm">
-                  <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
-                  <span className="text-gold text-[9px] sm:text-[11px] font-medium uppercase tracking-widest">
-                    {slides[current].krotkiNaglowek}
-                  </span>
+              <div className="max-w-xl mb-28 sm:mb-32 md:mb-0 relative">
+                <div className="pb-20 sm:pb-24 md:pb-[88px]">
+                  <div className="inline-flex items-center gap-2 bg-gold/10 border border-gold/20 rounded-full px-3.5 sm:px-5 py-1.5 sm:py-2 mb-5 md:mb-8 backdrop-blur-sm">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+                    <span className="text-gold text-[9px] sm:text-[11px] font-medium uppercase tracking-widest">
+                      {slides[current].krotkiNaglowek}
+                    </span>
+                  </div>
+
+                  <h1 className="font-serif text-[1.75rem] sm:text-3xl md:text-4xl lg:text-6xl font-semibold text-white leading-[1.1] tracking-tight mb-3 sm:mb-4 md:mb-6">
+                    {slides[current].naglowek}
+                  </h1>
+
+                  <p className="text-white/50 text-xs sm:text-sm md:text-base lg:text-lg font-light leading-relaxed max-w-md">
+                    {slides[current].description}
+                  </p>
                 </div>
 
-                <h1 className="font-serif text-[1.75rem] sm:text-3xl md:text-4xl lg:text-6xl font-semibold text-white leading-[1.1] tracking-tight mb-3 sm:mb-4 md:mb-6">
-                  {slides[current].naglowek}
-                </h1>
-
-                <p className="text-white/50 text-xs sm:text-sm md:text-base lg:text-lg font-light leading-relaxed mb-6 sm:mb-8 md:mb-10 max-w-md">
-                  {slides[current].description}
-                </p>
-
-                <a
-                  href="#kontakt"
-                  className="group inline-flex items-center gap-2 sm:gap-3 bg-gold text-navy font-semibold text-xs sm:text-sm px-5 sm:px-8 py-3 sm:py-3.5 md:py-4 rounded-lg sm:rounded-xl hover:bg-gold-light transition-all duration-300"
-                >
-                  {data.button.text}
-                  <FiArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
-                </a>
+                <div className="absolute bottom-0 left-0">
+                  <a
+                    href="#kontakt"
+                    className="group inline-flex items-center gap-2 sm:gap-3 bg-gold text-navy font-semibold text-xs sm:text-sm px-5 sm:px-8 py-3 sm:py-3.5 md:py-4 rounded-lg sm:rounded-xl hover:bg-gold-light transition-all duration-300"
+                  >
+                    {data.button.text}
+                    <FiArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

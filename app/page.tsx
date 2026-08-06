@@ -294,6 +294,7 @@ export default async function Home() {
         data={{
           ...page.sekcjaOMnie,
           whatsapp: settings.numerTelefonuWahtshap,
+          instagram: settings.socialMedia.instagram,
         }}
       />
       <Services data={page.sekcjaUslugi} />

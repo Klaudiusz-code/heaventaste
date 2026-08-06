@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { FiVolume2, FiVolumeX, FiCheck } from "react-icons/fi";
-import { FaWhatsapp } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 
 interface AboutProps {
   data: {
@@ -21,7 +21,17 @@ interface AboutProps {
     }[];
 
     whatsapp: string;
+    instagram: string;
   };
+}
+
+function getInstagramDmLink(url: string): string {
+  if (!url) return "#";
+  try {
+    const match = url.match(/instagram\.com\/([^/?#]+)/);
+    if (match) return `https://ig.me/m/${match[1]}`;
+  } catch {}
+  return url;
 }
 
 export default function About({ data }: AboutProps) {
@@ -41,6 +51,8 @@ export default function About({ data }: AboutProps) {
       setMuted(!muted);
     }
   };
+
+  const dmLink = getInstagramDmLink(data.instagram);
 
   return (
     <section
@@ -149,13 +161,16 @@ export default function About({ data }: AboutProps) {
             </div>
 
             <a
-              href={`https://wa.me/48${data.whatsapp}`}
+              href={dmLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 md:mt-10 inline-flex items-center gap-3 bg-[#25D366] text-white text-sm font-semibold px-7 py-4 rounded-xl hover:bg-[#20bd5a] transition-all duration-300 hover:shadow-xl hover:shadow-green-500/25 hover:-translate-y-0.5 group/btn"
+              className="mt-8 md:mt-10 inline-flex items-center gap-2 md:gap-3 bg-gradient-to-r from-[#833AB4] via-[#E1306C] to-[#F77737] text-white text-[11px] sm:text-xs md:text-sm font-semibold px-4 sm:px-5 md:px-7 py-2.5 sm:py-3 md:py-4 rounded-lg sm:rounded-xl hover:shadow-xl hover:shadow-pink-500/25 hover:-translate-y-0.5 transition-all duration-300 group/btn whitespace-nowrap"
             >
-              <FaWhatsapp className="w-5 h-5 group-hover:scale-110 transition-transform" />
-              Szybki kontakt na WhatsApp
+              <FaInstagram className="w-3.5 h-3.5 sm:w-4 sm:h-4 md:w-5 md:h-5 group-hover:scale-110 transition-transform flex-shrink-0" />
+              <span className="hidden xs:inline">
+                Szybki kontakt w DM na Instagram
+              </span>
+              <span className="xs:hidden">Napisz w DM</span>
             </a>
           </div>
         </div>
