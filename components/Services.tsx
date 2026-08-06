@@ -39,16 +39,16 @@ export default function Services({ data }: ServicesProps) {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 gap-x-8 md:gap-x-12 lg:gap-x-16">
+        <div className="grid sm:grid-cols-2 items-start gap-x-8 md:gap-x-12 lg:gap-x-16">
           {data.listServices.map((service, i) => {
             const Icon = icons[i] || FaCocktail;
 
             return (
               <div
                 key={i}
-                className="group border-b border-white/[0.06] py-5 md:py-8 first:pt-0 cursor-default transition-all duration-500"
+                className="group border-b border-white/[0.06] py-5 md:py-8 cursor-default transition-all duration-500"
               >
-                <div className="flex items-start gap-3 md:gap-5 p-2 -mx-2 md:p-4 md:-mx-4 rounded-xl md:rounded-2xl hover:bg-white/[0.03] transition-colors duration-500">
+                <div className="flex items-start gap-3 md:gap-5 p-2 md:p-4 rounded-xl md:rounded-2xl hover:bg-white/[0.03] transition-colors duration-500">
                   <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-white/[0.04] border border-white/[0.06] flex items-center justify-center flex-shrink-0 group-hover:bg-gold/10 group-hover:border-gold/20 transition-all duration-500 mt-0.5">
                     <Icon
                       className="

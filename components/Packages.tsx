@@ -47,7 +47,7 @@ export default function Packages({ data }: PackagesProps) {
           {packages.map((pkg, i) => (
             <div
               key={i}
-              className={`relative rounded-2xl p-5 md:p-8 flex flexcioł transition-all duration-300 hover:-translate-y-1 ${
+              className={`relative rounded-2xl p-5 md:p-8 flex flex-col transition-all duration-300 hover:-translate-y-1 ${
                 i === 1
                   ? "bg-white border-2 border-gold shadow-2xl shadow-gold/10 sm:col-span-2 lg:col-span-1"
                   : "bg-cream/40 border border-navy/[0.06] hover:shadow-xl hover:shadow-navy/5"
@@ -64,9 +64,12 @@ export default function Packages({ data }: PackagesProps) {
                   {pkg.nazwa}
                 </h3>
 
-                <p className="text-navy/40 text-xs md:text-sm font-light mt-2 leading-relaxed">
-                  {pkg.shortDescription}
-                </p>
+                <p
+                  className="text-navy/40 text-xs md:text-sm font-light mt-2 leading-[1.3] tracking-wide"
+                  dangerouslySetInnerHTML={{
+                    __html: pkg.shortDescription.replace(". ", ".<br>"),
+                  }}
+                />
 
                 <div
                   className={`w-full h-px my-4 md:my-6 ${
