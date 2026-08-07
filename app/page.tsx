@@ -64,9 +64,9 @@ query HomePage {
       benefity {
         tekst
       }
-      wideo {
+       videoAbout {
         node {
-          sourceUrl
+         	mediaItemUrl
         }
       }
     }

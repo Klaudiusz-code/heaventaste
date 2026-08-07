@@ -10,9 +10,9 @@ interface AboutProps {
     opis: string;
     cytat: string;
 
-    wideo: {
+    videoAbout: {
       node: {
-        sourceUrl: string;
+        mediaItemUrl: string;
       };
     } | null;
 
@@ -53,7 +53,6 @@ export default function About({ data }: AboutProps) {
   };
 
   const dmLink = getInstagramDmLink(data.instagram);
-
   return (
     <section
       id="o-nas"
@@ -67,7 +66,7 @@ export default function About({ data }: AboutProps) {
             <div className="aspect-[4/5] rounded-[1.5rem] md:rounded-[2rem] overflow-hidden border-2 border-gold/20 shadow-2xl shadow-navy/20 relative bg-navy">
               <video
                 ref={videoRef}
-                src={data.wideo?.node.sourceUrl || "/vhs2.mp4"}
+                src={data.videoAbout?.node.mediaItemUrl || "/vhs2.mp4"}
                 autoPlay
                 loop
                 muted
