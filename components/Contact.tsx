@@ -15,11 +15,9 @@ type ContactProps = {
   data: {
     naglowekSekcji: string;
     opisSekcji: string;
-
     rodzajeprzyjec: {
       nazwa: string;
     }[];
-
     telefon: string;
     email: string;
     zasieg: string;
@@ -32,35 +30,55 @@ export default function Contact({ data }: ContactProps) {
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     setIsLoading(true);
 
     const form = e.currentTarget;
     const formData = new FormData(form);
 
     try {
-      const response = await fetch("https://formspree.io/f/xaewyyop", {
+      const response = await fetch("/api/contact", {
         method: "POST",
-        body: formData,
         headers: {
-          Accept: "application/json",
+          "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          imie: String(formData.get("name") || ""),
+          telefon: String(formData.get("phone") || ""),
+          email: String(formData.get("email") || ""),
+          data_wydarzenia: String(formData.get("date") || ""),
+          miejscowosc_wydarzenia: String(formData.get("location") || ""),
+          rodzaj_wydarzenia: String(formData.get("eventType") || ""),
+          liczba_gosci: String(formData.get("guests") || ""),
+          uwagi: String(formData.get("message") || ""),
+
+          // Honeypot
+          website: String(formData.get("_gotcha") || ""),
+        }),
       });
 
-      if (!response.ok) {
-        throw new Error("Błąd podczas wysyłania formularza.");
+      const result = await response.json();
+
+      if (!response.ok || result.ok !== true) {
+        throw new Error(result.error || "Błąd podczas wysyłania formularza.");
       }
 
       setSubmitted(true);
       form.reset();
-    } catch (error) {
-      console.error(error);
-      alert("Wystąpił błąd podczas wysyłania formularza.");
-    } finally {
-      setIsLoading(false);
 
       setTimeout(() => {
         setSubmitted(false);
       }, 5000);
+    } catch (error) {
+      console.error("Błąd formularza:", error);
+
+      alert(
+        error instanceof Error
+          ? error.message
+          : "Wystąpił błąd podczas wysyłania formularza.",
+      );
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -80,6 +98,7 @@ export default function Contact({ data }: ContactProps) {
               {(() => {
                 const words = data.naglowekSekcji.split(" ");
                 const lastWord = words.pop();
+
                 return (
                   <>
                     {words.join(" ")}{" "}
@@ -147,14 +166,7 @@ export default function Contact({ data }: ContactProps) {
           <div className="lg:col-span-3">
             <div className="bg-[#0f2744] p-6 md:p-8 rounded-2xl border border-white/10">
               <form onSubmit={handleSubmit} className="space-y-6">
-                <input
-                  type="hidden"
-                  name="_subject"
-                  value="Nowe zapytanie - Heaven Taste Bar"
-                />
-
-                <input type="hidden" name="_language" value="pl" />
-
+                {/* Honeypot - niewidoczne pole dla botów */}
                 <input
                   type="text"
                   name="_gotcha"
@@ -376,6 +388,7 @@ export default function Contact({ data }: ContactProps) {
                 >
                   Heaven Taste Bar
                 </a>
+
                 <img
                   style={{
                     margin: "8px auto 0",
