@@ -133,13 +133,14 @@ export default function Footer({ data }: FooterProps) {
           </div>
         </div>
 
-        {/* REKOMENDACJA WESELE Z KLASĄ */}
+        {/* REKOMENDACJE */}
         <div className="mt-14 pt-10 border-t border-white/[0.05]">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
-            <span className="text-white/20 text-[11px] uppercase tracking-[0.2em] whitespace-nowrap">
-              Rekomendacja
-            </span>
+          <span className="text-white/20 text-[11px] uppercase tracking-[0.2em] whitespace-nowrap">
+            Rekomendacje
+          </span>
 
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-10 mt-5">
+            {/* Wesele z Klasą */}
             <a
               href="https://www.weselezklasa.pl/ogloszenia-weselne/heaven-taste-mobilne-uslugi-barmanskie,45810/"
               target="_blank"
@@ -162,10 +163,32 @@ export default function Footer({ data }: FooterProps) {
                 </span>
               </div>
             </a>
+
+            {/* Orły Rozrywki */}
+            <a
+              href="https://www.orlyrozrywki.pl/profile-1040344-heaven-taste-events"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Heaven Taste & Events - Gdańsk"
+              className="group flex items-center gap-4 rounded-lg px-4 py-3 -ml-4 sm:ml-0 hover:bg-white/[0.02] transition-colors"
+            >
+              <img
+                src="https://www.orlyrozrywki.pl/images/medals/1040344/laureat300_gold_pl.png"
+                alt="Heaven Taste & Events - Gdańsk"
+                className="h-8 w-auto opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+              />
+              <div className="flex flex-col">
+                <span className="text-white/50 text-base font-light group-hover:text-white/70 transition-colors leading-tight">
+                  Orły Rozrywki
+                </span>
+                <span className="text-white/20 text-xs font-light mt-1">
+                  Zobacz nasz profil na portalu →
+                </span>
+              </div>
+            </a>
           </div>
         </div>
 
-        {/* DOLNA STOPKA */}
         <div className="mt-10 pt-8 border-t border-white/[0.05] flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-white/20 text-xs text-center sm:text-left">
             © {new Date().getFullYear()} Heaven Taste Bar. Wszelkie prawa
